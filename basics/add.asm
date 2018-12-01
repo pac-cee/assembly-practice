@@ -36,3 +36,16 @@ main:
     lea     rcx, [format_in]
     lea     rdx, [num2]
     call    scanf
+
+    ; Add the numbers
+    mov     eax, [num1]
+    add     eax, [num2]
+
+    ; Print result
+    lea     rcx, [result_msg]
+    mov     edx, eax
+    call    printf
+
+    xor     eax, eax
+    leave
+    ret
