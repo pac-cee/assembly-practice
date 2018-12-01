@@ -17,3 +17,22 @@ section .text
     extern printf
     extern scanf
 
+main:
+    push    rbp
+    mov     rbp, rsp
+    sub     rsp, 32
+
+    ; Get array size
+    lea     rcx, [prompt_size]
+    call    printf
+    
+    lea     rcx, [format_in]
+    lea     rdx, [size]
+    call    scanf
+
+    ; Input array elements
+    xor     r12d, r12d        ; Counter
+input_loop:
+    cmp     r12d, [size]
+    jge     process_array
+    
