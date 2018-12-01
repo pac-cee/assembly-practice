@@ -36,3 +36,22 @@ input_loop:
     cmp     r12d, [size]
     jge     process_array
     
+    lea     rcx, [prompt_num]
+    mov     edx, r12d
+    inc     edx
+    call    printf
+    
+    lea     rcx, [format_in]
+    lea     rdx, [array + r12d*4]
+    call    scanf
+    
+    inc     r12d
+    jmp     input_loop
+
+process_array:
+    ; Calculate sum
+    xor     eax, eax        ; Sum
+    xor     r12d, r12d      ; Counter
+sum_loop:
+    cmp     r12d, [size]
+    jge     print_sum
