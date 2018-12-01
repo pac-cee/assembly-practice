@@ -17,3 +17,22 @@ section .text
 main:
     push    rbp
     mov     rbp, rsp
+    sub     rsp, 32        ; Reserve shadow space
+
+    ; Print first prompt
+    lea     rcx, [prompt1]
+    call    printf
+
+    ; Get first number
+    lea     rcx, [format_in]
+    lea     rdx, [num1]
+    call    scanf
+
+    ; Print second prompt
+    lea     rcx, [prompt2]
+    call    printf
+
+    ; Get second number
+    lea     rcx, [format_in]
+    lea     rdx, [num2]
+    call    scanf
