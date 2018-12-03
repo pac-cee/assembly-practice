@@ -55,3 +55,22 @@ process_array:
 sum_loop:
     cmp     r12d, [size]
     jge     print_sum
+    add     eax, [array + r12d*4]
+    inc     r12d
+    jmp     sum_loop
+
+print_sum:
+    push    rax             ; Save sum
+    lea     rcx, [sum_msg]
+    mov     edx, eax
+    call    printf
+    pop     rax
+
+    ; Calculate average
+    cdq
+    idiv    dword [size]
+    lea     rcx, [avg_msg]
+    mov     edx, eax
+    call    printf
+
+    ; Find maximum
