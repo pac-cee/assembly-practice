@@ -17,3 +17,22 @@ section .text
     extern printf
     extern scanf
 
+main:
+    push    rbp
+    mov     rbp, rsp
+    sub     rsp, 32
+
+    ; Get first number
+    lea     rcx, [prompt1]
+    call    printf
+    
+    lea     rcx, [format_in_num]
+    lea     rdx, [num1]
+    call    scanf
+
+    ; Get operator
+    lea     rcx, [prompt2]
+    call    printf
+    
+    lea     rcx, [format_in_op]
+    lea     rdx, [operator]
