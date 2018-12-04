@@ -36,3 +36,22 @@ main:
     
     lea     rcx, [format_in_op]
     lea     rdx, [operator]
+    call    scanf
+
+    ; Get second number
+    lea     rcx, [prompt3]
+    call    printf
+    
+    lea     rcx, [format_in_num]
+    lea     rdx, [num2]
+    call    scanf
+
+    ; Perform calculation
+    mov     eax, [num1]
+    mov     ebx, [num2]
+    movzx   ecx, byte [operator]
+
+    cmp     cl, '+'
+    je      add_nums
+    cmp     cl, '-'
+    je      sub_nums
