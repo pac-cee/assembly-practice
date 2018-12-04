@@ -74,3 +74,22 @@ print_sum:
     call    printf
 
     ; Find maximum
+    mov     eax, [array]    ; First element as initial max
+    xor     r12d, r12d
+max_loop:
+    inc     r12d
+    cmp     r12d, [size]
+    jge     print_max
+    cmp     eax, [array + r12d*4]
+    jge     max_loop
+    mov     eax, [array + r12d*4]
+    jmp     max_loop
+
+print_max:
+    lea     rcx, [max_msg]
+    mov     edx, eax
+    call    printf
+
+    xor     eax, eax
+    leave
+    ret
