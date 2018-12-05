@@ -74,3 +74,14 @@ mul_nums:
     jmp     print_result
 
 div_nums:
+    cdq
+    idiv    ebx
+
+print_result:
+    lea     rcx, [result_msg]
+    mov     edx, eax
+    call    printf
+
+    xor     eax, eax
+    leave
+    ret
