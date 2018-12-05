@@ -17,3 +17,22 @@ section .data
     prime_no db "Number is not prime.", 10, 0
 
 section .bss
+    choice resd 1    ; User's menu choice
+    number resd 1    ; Input number N
+    temp resd 1      ; Temporary storage
+
+section .text
+    default rel
+    global main
+    extern printf
+    extern scanf
+
+main:
+    push    rbp
+    mov     rbp, rsp
+    sub     rsp, 32        ; Shadow space
+
+menu_loop:
+    ; Display menu
+    lea     rcx, [menu]
+    call    printf
