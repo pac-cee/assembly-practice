@@ -55,3 +55,22 @@ main:
     je      add_nums
     cmp     cl, '-'
     je      sub_nums
+    cmp     cl, '*'
+    je      mul_nums
+    cmp     cl, '/'
+    je      div_nums
+    jmp     print_result
+
+add_nums:
+    add     eax, ebx
+    jmp     print_result
+
+sub_nums:
+    sub     eax, ebx
+    jmp     print_result
+
+mul_nums:
+    imul    eax, ebx
+    jmp     print_result
+
+div_nums:
