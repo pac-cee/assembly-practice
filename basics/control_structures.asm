@@ -55,3 +55,22 @@ menu_loop:
     je      do_prime_check
     
     cmp     eax, 4
+    je      do_fibonacci
+    
+    cmp     eax, 5
+    je      program_exit
+    
+    jmp     menu_loop     ; Invalid choice, show menu again
+
+do_counting:
+    ; Get N
+    lea     rcx, [prompt_n]
+    call    printf
+    
+    lea     rcx, [format_in]
+    lea     rdx, [number]
+    call    scanf
+
+    ; While loop to count from 1 to N
+    mov     r12d, 1           ; Counter = 1
+count_loop:
