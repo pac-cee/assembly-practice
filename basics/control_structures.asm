@@ -36,3 +36,22 @@ menu_loop:
     ; Display menu
     lea     rcx, [menu]
     call    printf
+
+    ; Get choice
+    lea     rcx, [format_in]
+    lea     rdx, [choice]
+    call    scanf
+
+    ; Switch-like structure using comparisons
+    mov     eax, [choice]
+    
+    cmp     eax, 1
+    je      do_counting
+    
+    cmp     eax, 2
+    je      do_factorial
+    
+    cmp     eax, 3
+    je      do_prime_check
+    
+    cmp     eax, 4
