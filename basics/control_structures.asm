@@ -74,3 +74,22 @@ do_counting:
     ; While loop to count from 1 to N
     mov     r12d, 1           ; Counter = 1
 count_loop:
+    cmp     r12d, [number]
+    jg      count_done
+
+    ; Print current number
+    lea     rcx, [format_out]
+    mov     edx, r12d
+    call    printf
+
+    inc     r12d
+    jmp     count_loop
+count_done:
+    lea     rcx, [newline]
+    call    printf
+    jmp     menu_loop
+
+do_factorial:
+    ; Get N
+    lea     rcx, [prompt_n]
+    call    printf
