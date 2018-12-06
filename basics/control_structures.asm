@@ -93,3 +93,22 @@ do_factorial:
     ; Get N
     lea     rcx, [prompt_n]
     call    printf
+    
+    lea     rcx, [format_in]
+    lea     rdx, [number]
+    call    scanf
+
+    ; Calculate factorial using a loop
+    mov     eax, 1           ; Result = 1
+    mov     r12d, 1          ; Counter = 1
+fact_loop:
+    cmp     r12d, [number]
+    jg      fact_done
+
+    imul    eax, r12d        ; Result *= counter
+    inc     r12d
+    jmp     fact_loop
+fact_done:
+    ; Print result
+    lea     rcx, [result_msg]
+    mov     edx, eax
