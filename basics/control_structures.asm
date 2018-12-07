@@ -131,3 +131,22 @@ do_prime_check:
     
     mov     r12d, 2         ; Divisor = 2
 prime_loop:
+    mov     eax, [number]
+    cmp     r12d, eax      ; If divisor >= N, it's prime
+    jge     is_prime
+
+    mov     eax, [number]
+    xor     edx, edx       ; Clear edx for division
+    div     r12d           ; Divide N by divisor
+    
+    cmp     edx, 0         ; If remainder is 0, not prime
+    je      not_prime
+
+    inc     r12d           ; Try next divisor
+    jmp     prime_loop
+
+is_prime:
+    lea     rcx, [prime_yes]
+    call    printf
+    jmp     menu_loop
+
