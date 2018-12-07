@@ -112,3 +112,22 @@ fact_done:
     ; Print result
     lea     rcx, [result_msg]
     mov     edx, eax
+    call    printf
+    jmp     menu_loop
+
+do_prime_check:
+    ; Get N
+    lea     rcx, [prompt_n]
+    call    printf
+    
+    lea     rcx, [format_in]
+    lea     rdx, [number]
+    call    scanf
+
+    ; Check if prime
+    mov     eax, [number]
+    cmp     eax, 1          ; If N <= 1, not prime
+    jle     not_prime
+    
+    mov     r12d, 2         ; Divisor = 2
+prime_loop:
