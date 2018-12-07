@@ -150,3 +150,22 @@ is_prime:
     call    printf
     jmp     menu_loop
 
+not_prime:
+    lea     rcx, [prime_no]
+    call    printf
+    jmp     menu_loop
+
+do_fibonacci:
+    ; Get N
+    lea     rcx, [prompt_n]
+    call    printf
+    
+    lea     rcx, [format_in]
+    lea     rdx, [number]
+    call    scanf
+
+    ; Print first two Fibonacci numbers
+    mov     r12d, 0        ; First number
+    mov     r13d, 1        ; Second number
+    mov     r14d, 0        ; Counter
+    
