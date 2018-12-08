@@ -169,3 +169,22 @@ do_fibonacci:
     mov     r13d, 1        ; Second number
     mov     r14d, 0        ; Counter
     
+fib_loop:
+    cmp     r14d, [number]
+    jge     fib_done
+
+    ; Print current number
+    lea     rcx, [format_out]
+    mov     edx, r12d
+    call    printf
+
+    ; Calculate next Fibonacci number
+    mov     eax, r12d      ; Save first number
+    mov     r12d, r13d     ; First = second
+    add     r13d, eax      ; Second = first + second
+    
+    inc     r14d
+    jmp     fib_loop
+fib_done:
+    lea     rcx, [newline]
+    call    printf
