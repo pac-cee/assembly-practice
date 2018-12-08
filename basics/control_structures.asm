@@ -188,3 +188,9 @@ fib_loop:
 fib_done:
     lea     rcx, [newline]
     call    printf
+    jmp     menu_loop
+
+program_exit:
+    xor     eax, eax
+    leave
+    ret
