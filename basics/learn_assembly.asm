@@ -112,3 +112,22 @@ registers_lesson:
 
     jmp     wait_and_return
 
+memory_lesson:
+    ; Display header
+    lea     rcx, [mem_header]
+    call    printf
+
+    ; Demonstrate memory operations
+    mov     dword [input], 123   ; Store to memory
+    mov     eax, [input]         ; Load from memory
+    
+    ; Show different addressing modes
+    lea     rcx, [format_out]
+    mov     edx, eax
+    call    printf
+
+    jmp     wait_and_return
+
+arithmetic_lesson:
+    ; Display header
+    lea     rcx, [arith_header]
