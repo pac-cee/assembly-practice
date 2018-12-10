@@ -93,3 +93,22 @@ menu_loop:
     
     cmp     eax, 9
     je      program_exit
+    
+    jmp     menu_loop
+
+registers_lesson:
+    ; Display header
+    lea     rcx, [reg_header]
+    call    printf
+
+    ; Demonstrate register operations
+    mov     eax, 42         ; Load immediate value
+    mov     ebx, eax        ; Register to register move
+    
+    ; Show result
+    lea     rcx, [format_out]
+    mov     edx, ebx
+    call    printf
+
+    jmp     wait_and_return
+
