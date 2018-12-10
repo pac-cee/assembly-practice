@@ -74,3 +74,22 @@ menu_loop:
     je      memory_lesson
     
     cmp     eax, 3
+    je      arithmetic_lesson
+    
+    cmp     eax, 4
+    je      control_flow_lesson
+    
+    cmp     eax, 5
+    je      stack_lesson
+    
+    cmp     eax, 6
+    je      arrays_lesson
+    
+    cmp     eax, 7
+    je      functions_lesson
+    
+    cmp     eax, 8
+    je      bits_lesson
+    
+    cmp     eax, 9
+    je      program_exit
