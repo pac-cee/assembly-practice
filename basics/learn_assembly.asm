@@ -55,3 +55,22 @@ menu_loop:
     ; Display menu
     lea     rcx, [menu]
     call    printf
+
+    ; Get choice
+    lea     rcx, [format_in]
+    lea     rdx, [choice]
+    call    scanf
+
+    ; Clear input buffer
+    call    getchar
+
+    ; Switch based on choice
+    mov     eax, [choice]
+    
+    cmp     eax, 1
+    je      registers_lesson
+    
+    cmp     eax, 2
+    je      memory_lesson
+    
+    cmp     eax, 3
