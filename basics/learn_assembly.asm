@@ -36,3 +36,22 @@ section .data
 section .bss
     choice resd 1
     input resd 1
+    result resd 1
+    buffer resb 100
+
+section .text
+    default rel
+    global main
+    extern printf
+    extern scanf
+    extern getchar
+
+main:
+    push    rbp
+    mov     rbp, rsp
+    sub     rsp, 32
+
+menu_loop:
+    ; Display menu
+    lea     rcx, [menu]
+    call    printf
