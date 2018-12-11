@@ -150,3 +150,22 @@ arithmetic_lesson:
 control_flow_lesson:
     ; Display header
     lea     rcx, [flow_header]
+    call    printf
+
+    ; Demonstrate comparisons
+    mov     eax, 10
+    cmp     eax, 5
+    jg      .greater
+    
+.less:
+    mov     ebx, 0
+    jmp     .done
+    
+.greater:
+    mov     ebx, 1
+
+.done:
+    lea     rcx, [format_out]
+    mov     edx, ebx
+    call    printf
+
