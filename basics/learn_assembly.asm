@@ -131,3 +131,22 @@ memory_lesson:
 arithmetic_lesson:
     ; Display header
     lea     rcx, [arith_header]
+    call    printf
+
+    ; Demonstrate arithmetic
+    mov     eax, 5
+    add     eax, 3          ; Addition
+    mov     ebx, eax
+    sub     ebx, 2          ; Subtraction
+    imul    ebx, 4          ; Multiplication
+    
+    ; Show results
+    lea     rcx, [format_out]
+    mov     edx, ebx
+    call    printf
+
+    jmp     wait_and_return
+
+control_flow_lesson:
+    ; Display header
+    lea     rcx, [flow_header]
