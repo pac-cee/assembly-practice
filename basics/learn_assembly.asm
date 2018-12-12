@@ -207,3 +207,22 @@ arrays_lesson:
     lea     rcx, [format_out]
     mov     edx, eax
     call    printf
+
+    jmp     wait_and_return
+
+functions_lesson:
+    ; Display header
+    lea     rcx, [func_header]
+    call    printf
+
+    ; Call a function
+    mov     ecx, 5
+    call    factorial
+    
+    ; Show result
+    lea     rcx, [format_out]
+    mov     edx, eax
+    call    printf
+
+    jmp     wait_and_return
+
