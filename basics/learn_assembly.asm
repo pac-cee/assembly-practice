@@ -169,3 +169,22 @@ control_flow_lesson:
     mov     edx, ebx
     call    printf
 
+    jmp     wait_and_return
+
+stack_lesson:
+    ; Display header
+    lea     rcx, [stack_header]
+    call    printf
+
+    ; Demonstrate stack operations
+    push    1234
+    push    5678
+    pop     rax
+    pop     rbx
+    
+    lea     rcx, [format_out]
+    mov     edx, eax
+    call    printf
+
+    jmp     wait_and_return
+
