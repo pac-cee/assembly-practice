@@ -188,3 +188,22 @@ stack_lesson:
 
     jmp     wait_and_return
 
+arrays_lesson:
+    ; Display header
+    lea     rcx, [array_header]
+    call    printf
+
+    ; Demonstrate array operations
+    mov     ecx, [demo_size]    ; Loop counter
+    xor     eax, eax            ; Sum
+    xor     edx, edx            ; Index
+    
+.sum_loop:
+    add     eax, [demo_array + edx*4]
+    inc     edx
+    loop    .sum_loop
+    
+    ; Show sum
+    lea     rcx, [format_out]
+    mov     edx, eax
+    call    printf
