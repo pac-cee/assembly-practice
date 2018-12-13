@@ -245,3 +245,22 @@ bits_lesson:
     call    printf
 
     jmp     wait_and_return
+
+wait_and_return:
+    ; Display press key message
+    lea     rcx, [press_key]
+    call    printf
+    
+    ; Wait for Enter
+    call    getchar
+    
+    jmp     menu_loop
+
+program_exit:
+    xor     eax, eax
+    leave
+    ret
+
+; Helper function for factorial calculation
+factorial:
+    push    rbp
