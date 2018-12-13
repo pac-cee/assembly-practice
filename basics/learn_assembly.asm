@@ -226,3 +226,22 @@ functions_lesson:
 
     jmp     wait_and_return
 
+bits_lesson:
+    ; Display header
+    lea     rcx, [bit_header]
+    call    printf
+
+    ; Demonstrate bit operations
+    mov     eax, 5          ; 0101 binary
+    shl     eax, 1          ; Shift left (multiply by 2)
+    shr     eax, 1          ; Shift right (divide by 2)
+    not     eax             ; Bitwise NOT
+    mov     ebx, 3          ; 0011 binary
+    and     eax, ebx        ; Bitwise AND
+    
+    ; Show result
+    lea     rcx, [format_hex]
+    mov     edx, eax
+    call    printf
+
+    jmp     wait_and_return
