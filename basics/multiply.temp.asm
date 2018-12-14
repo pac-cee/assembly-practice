@@ -17,3 +17,18 @@ print_loop:
     ; Calculate 5 * counter
     mov     eax, 5
     imul    eax, r12d
+    
+    ; Print result
+    lea     rcx, [format]
+    mov     edx, r12d         ; Current number
+    mov     r8d, eax          ; Result of multiplication
+    xor     rax, rax
+    call    printf
+    
+    inc     r12d
+    cmp     r12d, 11
+    jl      print_loop
+    
+    xor     eax, eax
+    leave
+    ret
