@@ -17,3 +17,22 @@ main:
     mov     rbp, rsp
     sub     rsp, 32            ; Shadow space
 
+    ; Print prompt
+    lea     rcx, [prompt]
+    xor     rax, rax
+    call    printf
+
+    ; Read user input
+    lea     rcx, [scanfmt]     ; First argument for scanf
+    lea     rdx, [number]      ; Second argument - address to store number
+    xor     rax, rax
+    call    scanf
+
+    mov     r12d, 1           ; Counter (1 to 10)
+    
+print_loop:
+    ; Calculate number * counter
+    mov     eax, [number]      ; Get user's number
+    imul    eax, r12d         ; Multiply by counter
+    
+    ; Print result
