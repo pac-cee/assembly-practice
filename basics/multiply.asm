@@ -36,3 +36,17 @@ print_loop:
     imul    eax, r12d         ; Multiply by counter
     
     ; Print result
+    lea     rcx, [format]      ; First argument for printf
+    mov     edx, [number]      ; Second argument (user's number)
+    mov     r8d, r12d         ; Third argument (counter)
+    mov     r9d, eax          ; Fourth argument (result)
+    xor     rax, rax
+    call    printf
+    
+    inc     r12d
+    cmp     r12d, 11
+    jl      print_loop
+    
+    xor     eax, eax
+    leave
+    ret
