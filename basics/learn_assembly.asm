@@ -264,3 +264,21 @@ program_exit:
 ; Helper function for factorial calculation
 factorial:
     push    rbp
+    mov     rbp, rsp
+    
+    cmp     ecx, 1
+    jle     .base_case
+    
+    push    rcx
+    dec     ecx
+    call    factorial
+    pop     rcx
+    imul    eax, ecx
+    jmp     .done
+    
+.base_case:
+    mov     eax, 1
+    
+.done:
+    leave
+    ret
