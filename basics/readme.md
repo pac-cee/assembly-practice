@@ -17,3 +17,22 @@
 14. [Stack Management](#stack-management)
 15. [Advanced Topics](#advanced-topics)
 16. [Debugging and Best Practices](#debugging-and-best-practices)
+17. [Common Patterns and Examples](#common-patterns-and-examples)
+
+---
+
+## What is Assembly Language?
+
+Assembly language is a low-level programming language that provides direct control over the computer's hardware. Each assembly instruction typically corresponds to one machine code instruction that the processor executes.
+
+**Why learn Assembly?**
+- Understanding how computers work at the lowest level
+- Performance optimization
+- System programming
+- Reverse engineering
+- Embedded systems programming
+- Better understanding of higher-level languages
+
+---
+
+## NASM Basics and Setup
