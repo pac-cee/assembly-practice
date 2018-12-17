@@ -150,3 +150,22 @@ R8B, R9B, R10B, R11B            ; Low bytes of R8-R11
 - **RSP**: Stack pointer (never use directly for data)
 - **RBP**: Base pointer (frame pointer)
 - **RBX, RSI, RDI, R12-R15**: Callee-saved (preserve across function calls)
+
+---
+
+## Memory Management
+
+### Memory Hierarchy
+1. **Registers** (fastest, smallest)
+2. **Cache** (L1, L2, L3)
+3. **RAM** (main memory)
+4. **Storage** (slowest, largest)
+
+### Memory Layout (Windows)
+```
+High Addresses
++------------------+
+|      Stack       | ← RSP points here
+|        ↓         |
+|                  |
+|        ↑         |
