@@ -74,3 +74,22 @@ section .bss
     counter resd 1     ; Reserve 1 dword (4 bytes)
 
 section .text
+    default rel        ; Use relative addressing (Windows 64-bit)
+    global main        ; Entry point for C runtime
+    extern printf      ; External C library function
+
+main:
+    ; Your code goes here
+    ; Function prologue
+    push rbp
+    mov rbp, rsp
+    sub rsp, 32        ; Shadow space for Windows x64 calling convention
+    
+    ; Your actual code
+    
+    ; Function epilogue and return
+    xor eax, eax       ; Return 0
+    leave              ; Equivalent to: mov rsp, rbp; pop rbp
+    ret
+```
+
