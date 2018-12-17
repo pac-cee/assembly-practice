@@ -131,3 +131,22 @@ R8W, R9W, R10W, R11W  ; Lower 16 bits of R8-R11
 
 #### 8-bit Registers
 ```
+AL, AH, BL, BH, CL, CH, DL, DH  ; Low/High bytes of AX, BX, CX, DX
+SIL, DIL, SPL, BPL              ; Low bytes of SI, DI, SP, BP
+R8B, R9B, R10B, R11B            ; Low bytes of R8-R11
+```
+
+### Special Purpose Registers
+- **RIP**: Instruction Pointer (Program Counter)
+- **RFLAGS**: Status flags register
+- **Segment Registers**: CS, DS, ES, FS, GS, SS
+
+### Register Usage Convention (Windows x64)
+- **RAX**: Return value, accumulator
+- **RCX**: First argument
+- **RDX**: Second argument
+- **R8**: Third argument
+- **R9**: Fourth argument
+- **RSP**: Stack pointer (never use directly for data)
+- **RBP**: Base pointer (frame pointer)
+- **RBX, RSI, RDI, R12-R15**: Callee-saved (preserve across function calls)
