@@ -36,3 +36,22 @@ Assembly language is a low-level programming language that provides direct contr
 ---
 
 ## NASM Basics and Setup
+
+### Installation (Windows)
+```bash
+# You already have NASM installed since you're using it
+# To check version:
+nasm -v
+```
+
+### Basic Compilation Process
+```bash
+# 1. Assemble (.asm → .obj)
+nasm -f win64 filename.asm
+
+# 2. Link (.obj → .exe)
+# Using Microsoft's linker:
+link filename.obj /subsystem:console /entry:main /defaultlib:kernel32.lib /defaultlib:msvcrt.lib
+
+# Or using GCC linker:
+gcc filename.obj -o filename.exe
