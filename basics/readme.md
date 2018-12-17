@@ -93,3 +93,22 @@ main:
     ret
 ```
 
+### Section Types
+- **`.data`**: Initialized data (read-write)
+- **`.rodata`**: Read-only data (constants)
+- **`.bss`**: Uninitialized data (filled with zeros)
+- **`.text`**: Executable code
+
+---
+
+## Registers
+
+### x86-64 General Purpose Registers
+
+#### 64-bit Registers (R prefix)
+```
+RAX, RBX, RCX, RDX    ; Primary registers
+RSI, RDI              ; Source/Destination index
+RSP, RBP              ; Stack/Base pointer
+R8, R9, R10, R11      ; Additional registers
+R12, R13, R14, R15    ; Additional registers
