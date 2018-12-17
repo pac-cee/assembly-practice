@@ -55,3 +55,22 @@ link filename.obj /subsystem:console /entry:main /defaultlib:kernel32.lib /defau
 
 # Or using GCC linker:
 gcc filename.obj -o filename.exe
+```
+
+---
+
+## Program Structure
+
+### Basic NASM Program Structure
+```assembly
+section .data
+    ; Initialized data goes here
+    message db 'Hello World', 0
+    number dd 42
+
+section .bss
+    ; Uninitialized data goes here
+    buffer resb 100    ; Reserve 100 bytes
+    counter resd 1     ; Reserve 1 dword (4 bytes)
+
+section .text
