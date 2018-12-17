@@ -112,3 +112,22 @@ RSI, RDI              ; Source/Destination index
 RSP, RBP              ; Stack/Base pointer
 R8, R9, R10, R11      ; Additional registers
 R12, R13, R14, R15    ; Additional registers
+```
+
+#### 32-bit Registers (E prefix)
+```
+EAX, EBX, ECX, EDX    ; Lower 32 bits of RAX, RBX, RCX, RDX
+ESI, EDI, ESP, EBP    ; Lower 32 bits of RSI, RDI, RSP, RBP
+R8D, R9D, R10D, R11D  ; Lower 32 bits of R8-R11
+R12D, R13D, R14D, R15D ; Lower 32 bits of R12-R15
+```
+
+#### 16-bit Registers
+```
+AX, BX, CX, DX        ; Lower 16 bits
+SI, DI, SP, BP        ; Lower 16 bits
+R8W, R9W, R10W, R11W  ; Lower 16 bits of R8-R11
+```
+
+#### 8-bit Registers
+```
