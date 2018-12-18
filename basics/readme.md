@@ -226,3 +226,22 @@ MAX_COUNT   equ 100
 ; Use in code
 mov eax, BUFFER_SIZE
 ```
+
+---
+
+## Instructions and Opcodes
+
+### Data Movement Instructions
+```assembly
+; MOV - Move data
+mov rax, rbx        ; Copy rbx to rax
+mov eax, 42         ; Load immediate value
+mov rax, [rbx]      ; Load from memory address in rbx
+mov [rax], rbx      ; Store rbx to memory address in rax
+
+; LEA - Load Effective Address
+lea rax, [rbx + 8]  ; Load address (rbx + 8) into rax
+
+; MOVSX/MOVZX - Move with sign/zero extension
+movsx rax, bl       ; Sign-extend byte to qword
+movzx eax, bl       ; Zero-extend byte to dword
