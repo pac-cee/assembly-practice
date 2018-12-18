@@ -188,3 +188,22 @@ Low Addresses
 
 ---
 
+## Data Types and Storage
+
+### Data Declaration Directives
+```assembly
+section .data
+    ; Initialized data
+    char_val    db 'A'           ; Define byte (8-bit)
+    string_val  db 'Hello', 0    ; Null-terminated string
+    word_val    dw 1234          ; Define word (16-bit)
+    dword_val   dd 12345678      ; Define dword (32-bit)
+    qword_val   dq 123456789012  ; Define qword (64-bit)
+    float_val   dd 3.14159       ; 32-bit float
+    double_val  dq 2.71828       ; 64-bit double
+    
+    ; Arrays
+    byte_array  db 1, 2, 3, 4, 5
+    word_array  dw 100, 200, 300
+    
+    ; Multiple of same value
