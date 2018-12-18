@@ -169,3 +169,22 @@ High Addresses
 |        ↓         |
 |                  |
 |        ↑         |
+|       Heap       |
++------------------+
+|   .bss section   | (uninitialized data)
++------------------+
+|   .data section  | (initialized data)
++------------------+
+|   .text section  | (code)
++------------------+
+Low Addresses
+```
+
+### Memory Sizes
+- **Byte**: 8 bits (1 byte)
+- **Word**: 16 bits (2 bytes)
+- **Dword**: 32 bits (4 bytes) - "Double Word"
+- **Qword**: 64 bits (8 bytes) - "Quad Word"
+
+---
+
