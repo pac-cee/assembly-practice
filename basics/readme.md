@@ -207,3 +207,22 @@ section .data
     word_array  dw 100, 200, 300
     
     ; Multiple of same value
+    zeros       times 100 db 0   ; 100 zero bytes
+
+section .bss
+    ; Uninitialized data (reserves space)
+    buffer      resb 256         ; Reserve 256 bytes
+    int_var     resd 1           ; Reserve 1 dword
+    long_var    resq 1           ; Reserve 1 qword
+    array       resd 10          ; Reserve space for 10 dwords
+```
+
+### Constants and Equates
+```assembly
+; Define constants
+BUFFER_SIZE equ 1024
+MAX_COUNT   equ 100
+
+; Use in code
+mov eax, BUFFER_SIZE
+```
