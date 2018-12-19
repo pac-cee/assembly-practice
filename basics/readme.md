@@ -264,3 +264,22 @@ popf                ; Pop flags register
 
 ### Immediate Addressing
 ```assembly
+mov eax, 42         ; Load immediate value 42
+```
+
+### Register Addressing
+```assembly
+mov eax, ebx        ; Copy register to register
+```
+
+### Direct Memory Addressing
+```assembly
+mov eax, [variable] ; Load from memory variable
+mov [variable], eax ; Store to memory variable
+```
+
+### Indirect Addressing
+```assembly
+mov eax, [rbx]      ; Load from address stored in rbx
+mov [rax], ebx      ; Store to address stored in rax
+```
