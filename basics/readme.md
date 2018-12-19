@@ -302,3 +302,22 @@ Valid scale factors: 1, 2, 4, 8 (for byte, word, dword, qword)
 ### Unconditional Jumps
 ```assembly
 jmp label           ; Jump to label
+jmp rax             ; Jump to address in rax
+jmp [rax]           ; Jump to address stored at address in rax
+```
+
+### Conditional Jumps (after CMP instruction)
+```assembly
+cmp eax, ebx        ; Compare eax with ebx
+je equal            ; Jump if equal (ZF = 1)
+jne not_equal       ; Jump if not equal (ZF = 0)
+jg greater          ; Jump if greater (signed)
+jl less             ; Jump if less (signed)
+jge greater_equal   ; Jump if greater or equal (signed)
+jle less_equal      ; Jump if less or equal (signed)
+ja above            ; Jump if above (unsigned)
+jb below            ; Jump if below (unsigned)
+jae above_equal     ; Jump if above or equal (unsigned)
+jbe below_equal     ; Jump if below or equal (unsigned)
+
+; Other condition jumps
