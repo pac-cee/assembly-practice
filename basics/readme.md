@@ -245,3 +245,22 @@ lea rax, [rbx + 8]  ; Load address (rbx + 8) into rax
 ; MOVSX/MOVZX - Move with sign/zero extension
 movsx rax, bl       ; Sign-extend byte to qword
 movzx eax, bl       ; Zero-extend byte to dword
+
+; XCHG - Exchange
+xchg rax, rbx       ; Swap contents of rax and rbx
+```
+
+### Stack Operations
+```assembly
+push rax            ; Push rax onto stack (RSP -= 8)
+pop rbx             ; Pop from stack into rbx (RSP += 8)
+pushf               ; Push flags register
+popf                ; Pop flags register
+```
+
+---
+
+## Addressing Modes
+
+### Immediate Addressing
+```assembly
