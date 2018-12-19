@@ -283,3 +283,22 @@ mov [variable], eax ; Store to memory variable
 mov eax, [rbx]      ; Load from address stored in rbx
 mov [rax], ebx      ; Store to address stored in rax
 ```
+
+### Indexed Addressing
+```assembly
+mov eax, [rbx + 4]           ; Base + displacement
+mov eax, [rbx + rsi]         ; Base + index
+mov eax, [rbx + rsi * 2]     ; Base + (index * scale)
+mov eax, [rbx + rsi * 4 + 8] ; Base + (index * scale) + displacement
+```
+
+### Scale Factors
+Valid scale factors: 1, 2, 4, 8 (for byte, word, dword, qword)
+
+---
+
+## Control Flow
+
+### Unconditional Jumps
+```assembly
+jmp label           ; Jump to label
