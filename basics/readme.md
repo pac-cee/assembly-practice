@@ -378,3 +378,22 @@ sbb eax, ebx        ; eax = eax - ebx - carry_flag
 ; Unsigned multiplication
 mul ebx             ; EDX:EAX = EAX * EBX (64-bit result)
 imul ebx            ; EAX = EAX * EBX (32-bit result, signed)
+imul eax, ebx       ; EAX = EAX * EBX (two operand form)
+imul eax, ebx, 10   ; EAX = EBX * 10 (three operand form)
+
+; Examples:
+mov eax, 5
+mov ebx, 3
+imul eax, ebx       ; EAX = 15
+```
+
+### Division
+```assembly
+; Unsigned division
+mov eax, 15         ; Dividend low
+mov edx, 0          ; Dividend high (must be 0 for 32-bit)
+mov ebx, 3          ; Divisor
+div ebx             ; EAX = quotient, EDX = remainder
+
+; Signed division
+mov eax, -15
