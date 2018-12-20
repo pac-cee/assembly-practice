@@ -321,3 +321,22 @@ jae above_equal     ; Jump if above or equal (unsigned)
 jbe below_equal     ; Jump if below or equal (unsigned)
 
 ; Other condition jumps
+jz zero             ; Jump if zero (same as je)
+jnz not_zero        ; Jump if not zero (same as jne)
+jc carry            ; Jump if carry flag set
+jnc no_carry        ; Jump if carry flag clear
+js sign             ; Jump if sign flag set (negative)
+jns no_sign         ; Jump if sign flag clear (positive)
+jo overflow         ; Jump if overflow flag set
+jno no_overflow     ; Jump if overflow flag clear
+```
+
+### Loops
+```assembly
+; LOOP instruction (uses RCX as counter)
+mov rcx, 10
+loop_start:
+    ; Loop body
+    loop loop_start     ; Decrement RCX, jump if RCX != 0
+
+; Manual loop
