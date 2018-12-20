@@ -340,3 +340,22 @@ loop_start:
     loop loop_start     ; Decrement RCX, jump if RCX != 0
 
 ; Manual loop
+mov eax, 0
+mov ebx, 10
+manual_loop:
+    ; Loop body
+    inc eax
+    cmp eax, ebx
+    jl manual_loop
+```
+
+### Function Calls
+```assembly
+call function_name  ; Call function (pushes return address)
+ret                 ; Return from function (pops return address)
+ret 16              ; Return and clean up 16 bytes from stack
+```
+
+---
+
+## Arithmetic Operations
