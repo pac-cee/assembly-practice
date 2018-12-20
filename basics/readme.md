@@ -359,3 +359,22 @@ ret 16              ; Return and clean up 16 bytes from stack
 ---
 
 ## Arithmetic Operations
+
+### Addition and Subtraction
+```assembly
+add eax, ebx        ; eax = eax + ebx
+add eax, 10         ; eax = eax + 10
+sub eax, ebx        ; eax = eax - ebx
+inc eax             ; eax = eax + 1 (faster than add eax, 1)
+dec eax             ; eax = eax - 1 (faster than sub eax, 1)
+
+; With carry
+adc eax, ebx        ; eax = eax + ebx + carry_flag
+sbb eax, ebx        ; eax = eax - ebx - carry_flag
+```
+
+### Multiplication
+```assembly
+; Unsigned multiplication
+mul ebx             ; EDX:EAX = EAX * EBX (64-bit result)
+imul ebx            ; EAX = EAX * EBX (32-bit result, signed)
