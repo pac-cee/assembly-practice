@@ -397,3 +397,22 @@ div ebx             ; EAX = quotient, EDX = remainder
 
 ; Signed division
 mov eax, -15
+cdq                 ; Sign-extend EAX into EDX
+mov ebx, 3
+idiv ebx            ; EAX = quotient, EDX = remainder
+```
+
+**IMPORTANT**: Always clear/set EDX before division!
+
+---
+
+## Logical Operations
+
+### Bitwise Operations
+```assembly
+and eax, ebx        ; Bitwise AND
+or eax, ebx         ; Bitwise OR
+xor eax, ebx        ; Bitwise XOR
+not eax             ; Bitwise NOT (one's complement)
+
+; Common uses:
