@@ -435,3 +435,22 @@ shl eax, cl         ; Shift left by 3 (multiply by 8)
 ```
 
 ### Bit Testing
+```assembly
+test eax, eax       ; Test if eax is zero (sets flags)
+test eax, 0x01      ; Test if bit 0 is set
+bt eax, 5           ; Test bit 5 (sets carry flag)
+bts eax, 5          ; Test and set bit 5
+btr eax, 5          ; Test and reset bit 5
+btc eax, 5          ; Test and complement bit 5
+```
+
+---
+
+## String Operations
+
+String operations work with RSI (source) and RDI (destination) registers.
+
+```assembly
+; Direction flag
+cld                 ; Clear direction flag (forward)
+std                 ; Set direction flag (backward)
