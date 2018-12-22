@@ -473,3 +473,22 @@ repne cmpsb         ; Repeat while not equal
 scasb               ; Compare AL with [RDI]
 repne scasb         ; Find character in string
 
+; String store
+stosb               ; Store AL to [RDI]
+rep stosb           ; Fill memory with value
+
+; Example: Copy string
+section .data
+    source db "Hello World", 0
+section .bss
+    dest resb 20
+
+section .text
+    lea rsi, [source]   ; Source address
+    lea rdi, [dest]     ; Destination address
+    mov rcx, 12         ; Number of bytes
+    cld                 ; Forward direction
+    rep movsb           ; Copy string
+```
+
+---
