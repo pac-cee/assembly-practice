@@ -549,3 +549,22 @@ function_name:
     ; Function body
     ; Local variables at [rbp - offset]
     
+    ; Epilogue
+    leave               ; Equivalent to: mov rsp, rbp; pop rbp
+    ret                 ; Return to caller
+```
+
+### Local Variables
+```assembly
+function_with_locals:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 48         ; 32 shadow + 16 local variables
+    
+    ; Local variables:
+    ; [rbp - 8]  = first local variable (8 bytes)
+    ; [rbp - 16] = second local variable (8 bytes)
+    
+    mov dword [rbp - 8], 42     ; Store value in local variable
+    mov eax, [rbp - 8]          ; Load from local variable
+    
