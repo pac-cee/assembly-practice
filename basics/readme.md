@@ -454,3 +454,22 @@ String operations work with RSI (source) and RDI (destination) registers.
 ; Direction flag
 cld                 ; Clear direction flag (forward)
 std                 ; Set direction flag (backward)
+
+; String move
+movsb               ; Move byte from [RSI] to [RDI]
+movsw               ; Move word
+movsd               ; Move dword
+movsq               ; Move qword
+
+; With repeat prefix
+rep movsb           ; Repeat RCX times
+
+; String compare
+cmpsb               ; Compare bytes at [RSI] and [RDI]
+repe cmpsb          ; Repeat while equal
+repne cmpsb         ; Repeat while not equal
+
+; String scan
+scasb               ; Compare AL with [RDI]
+repne scasb         ; Find character in string
+
