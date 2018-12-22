@@ -416,3 +416,22 @@ xor eax, ebx        ; Bitwise XOR
 not eax             ; Bitwise NOT (one's complement)
 
 ; Common uses:
+xor eax, eax        ; Clear register (eax = 0)
+and eax, 0x0F       ; Mask lower 4 bits
+or eax, 0x80        ; Set bit 7
+```
+
+### Bit Shifting
+```assembly
+shl eax, 1          ; Shift left (multiply by 2)
+shr eax, 1          ; Shift right (unsigned divide by 2)
+sar eax, 1          ; Shift arithmetic right (signed divide by 2)
+rol eax, 1          ; Rotate left
+ror eax, 1          ; Rotate right
+
+; Shift by register
+mov cl, 3
+shl eax, cl         ; Shift left by 3 (multiply by 8)
+```
+
+### Bit Testing
