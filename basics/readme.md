@@ -511,3 +511,22 @@ section .data
     format db "Number: %d", 0ah, 0
     
 main:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 32         ; Shadow space
+    
+    lea rcx, [format]   ; First argument (format string)
+    mov edx, 42         ; Second argument (number)
+    call printf
+    
+    leave
+    ret
+```
+
+### Windows System Calls (Advanced)
+```assembly
+; System calls are more complex on Windows
+; Usually better to use C library functions
+```
+
+---
