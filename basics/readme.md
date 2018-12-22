@@ -587,3 +587,22 @@ function_with_locals:
 
 ; Usage
 PRINT_NUMBER 42
+```
+
+### Conditional Assembly
+```assembly
+%define DEBUG 1
+
+%if DEBUG
+    ; Debug code
+%endif
+```
+
+### Include Files
+```assembly
+%include "macros.inc"
+```
+
+### Floating Point Operations
+```assembly
+; Load floating point values
