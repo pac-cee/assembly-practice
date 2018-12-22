@@ -492,3 +492,22 @@ section .text
 ```
 
 ---
+
+## System Calls and C Library Functions
+
+### Using C Library Functions (Recommended for beginners)
+```assembly
+; External declarations
+extern printf, scanf, malloc, free, strlen
+
+; Windows x64 calling convention:
+; RCX, RDX, R8, R9 for first 4 arguments
+; Additional arguments on stack
+; Return value in RAX
+; Shadow space: 32 bytes on stack
+
+; Example: printf
+section .data
+    format db "Number: %d", 0ah, 0
+    
+main:
