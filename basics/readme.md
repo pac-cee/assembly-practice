@@ -606,3 +606,22 @@ PRINT_NUMBER 42
 ### Floating Point Operations
 ```assembly
 ; Load floating point values
+fld dword [float_var]   ; Load 32-bit float to ST(0)
+fld qword [double_var]  ; Load 64-bit double to ST(0)
+
+; Arithmetic
+fadd                    ; ST(0) = ST(0) + ST(1)
+fsub                    ; ST(0) = ST(0) - ST(1)
+fmul                    ; ST(0) = ST(0) * ST(1)
+fdiv                    ; ST(0) = ST(0) / ST(1)
+
+; Store results
+fstp dword [result]     ; Store ST(0) and pop
+```
+
+### SIMD Instructions (SSE/AVX)
+```assembly
+; SSE (128-bit)
+movaps xmm0, [data]     ; Move 4 packed single precision floats
+addps xmm0, xmm1        ; Add 4 floats in parallel
+
