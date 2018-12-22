@@ -568,3 +568,22 @@ function_with_locals:
     mov dword [rbp - 8], 42     ; Store value in local variable
     mov eax, [rbp - 8]          ; Load from local variable
     
+    leave
+    ret
+```
+
+---
+
+## Advanced Topics
+
+### Macros
+```assembly
+; Simple macro
+%macro PRINT_NUMBER 1
+    lea rcx, [number_format]
+    mov edx, %1
+    call printf
+%endmacro
+
+; Usage
+PRINT_NUMBER 42
