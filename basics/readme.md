@@ -530,3 +530,22 @@ main:
 ```
 
 ---
+
+## Stack Management
+
+### Stack Basics
+- Stack grows downward (toward lower addresses)
+- RSP points to top of stack
+- PUSH decreases RSP, POP increases RSP
+
+### Function Prologue and Epilogue
+```assembly
+function_name:
+    ; Prologue
+    push rbp            ; Save caller's base pointer
+    mov rbp, rsp        ; Set up new base pointer
+    sub rsp, 32         ; Allocate local variables + shadow space
+    
+    ; Function body
+    ; Local variables at [rbp - offset]
+    
