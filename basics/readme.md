@@ -644,3 +644,22 @@ vaddps ymm0, ymm1, ymm2 ; Add 8 floats in parallel
 1. **Comment your code**: Assembly is hard to read
 2. **Use meaningful labels**: `calculate_average` not `loop1`
 3. **Follow calling conventions**: Especially for C interop
+4. **Handle edge cases**: Division by zero, buffer overflows
+5. **Optimize later**: Write correct code first
+6. **Use constants**: Define magic numbers with `equ`
+7. **Align data**: Some instructions require aligned data
+
+### Common Mistakes
+1. **Forgetting to clear EDX before division**
+2. **Stack imbalance**: Not matching push/pop
+3. **Wrong data sizes**: Mixing byte/word/dword operations
+4. **Calling convention violations**: Wrong argument registers
+5. **Uninitialized variables**: Always initialize data
+
+---
+
+## Common Patterns and Examples
+
+### Pattern 1: Simple Input/Output
+```assembly
+section .data
