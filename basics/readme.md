@@ -625,3 +625,22 @@ fstp dword [result]     ; Store ST(0) and pop
 movaps xmm0, [data]     ; Move 4 packed single precision floats
 addps xmm0, xmm1        ; Add 4 floats in parallel
 
+; AVX (256-bit)
+vmovaps ymm0, [data]    ; Move 8 packed single precision floats
+vaddps ymm0, ymm1, ymm2 ; Add 8 floats in parallel
+```
+
+---
+
+## Debugging and Best Practices
+
+### Debugging Tips
+1. **Use a debugger**: x64dbg, Visual Studio debugger
+2. **Add debug prints**: Use printf to trace execution
+3. **Check registers**: Verify register contents at key points
+4. **Watch the stack**: Ensure proper stack management
+
+### Best Practices
+1. **Comment your code**: Assembly is hard to read
+2. **Use meaningful labels**: `calculate_average` not `loop1`
+3. **Follow calling conventions**: Especially for C interop
