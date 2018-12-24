@@ -682,3 +682,22 @@ main:
     ; Print prompt
     lea rcx, [prompt]
     call printf
+    
+    ; Read number
+    lea rcx, [format_in]
+    lea rdx, [number]
+    call scanf
+    
+    ; Print result
+    lea rcx, [format_out]
+    mov edx, [number]
+    call printf
+    
+    xor eax, eax
+    leave
+    ret
+```
+
+### Pattern 2: Array Processing
+```assembly
+section .data
