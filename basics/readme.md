@@ -663,3 +663,22 @@ vaddps ymm0, ymm1, ymm2 ; Add 8 floats in parallel
 ### Pattern 1: Simple Input/Output
 ```assembly
 section .data
+    prompt db "Enter number: ", 0
+    format_in db "%d", 0
+    format_out db "You entered: %d", 0ah, 0
+    
+section .bss
+    number resd 1
+    
+section .text
+    extern printf, scanf
+    global main
+    
+main:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 32
+    
+    ; Print prompt
+    lea rcx, [prompt]
+    call printf
