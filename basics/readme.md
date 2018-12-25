@@ -739,3 +739,22 @@ sum_loop:
 ; Calculate string length
 ; Input: RSI = string address
 ; Output: RAX = length
+strlen_func:
+    xor rax, rax        ; length = 0
+    
+strlen_loop:
+    cmp byte [rsi + rax], 0  ; Check for null terminator
+    je strlen_done      ; Jump if found
+    inc rax             ; length++
+    jmp strlen_loop     ; Continue
+    
+strlen_done:
+    ret                 ; Return length in RAX
+```
+
+### Pattern 4: Factorial Function
+```assembly
+; Calculate factorial recursively
+; Input: RCX = number
+; Output: RAX = factorial
+factorial:
