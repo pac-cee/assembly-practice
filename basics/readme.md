@@ -720,3 +720,22 @@ main:
     
 sum_loop:
     add eax, [array + ecx * 4]  ; sum += array[index]
+    inc ecx                     ; index++
+    cmp ecx, array_size         ; compare with size
+    jl sum_loop                 ; continue if index < size
+    
+    ; Print result
+    lea rcx, [sum_msg]
+    mov edx, eax
+    call printf
+    
+    xor eax, eax
+    leave
+    ret
+```
+
+### Pattern 3: String Length Function
+```assembly
+; Calculate string length
+; Input: RSI = string address
+; Output: RAX = length
