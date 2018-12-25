@@ -758,3 +758,22 @@ strlen_done:
 ; Input: RCX = number
 ; Output: RAX = factorial
 factorial:
+    push rbp
+    mov rbp, rsp
+    
+    cmp rcx, 1          ; if n <= 1
+    jle base_case       ; return 1
+    
+    ; Recursive case: n * factorial(n-1)
+    push rcx            ; Save n
+    dec rcx             ; n-1
+    call factorial      ; factorial(n-1)
+    pop rcx             ; Restore n
+    mul rcx             ; n * factorial(n-1)
+    
+    leave
+    ret
+    
+base_case:
+    mov rax, 1          ; return 1
+    leave
