@@ -701,3 +701,22 @@ main:
 ### Pattern 2: Array Processing
 ```assembly
 section .data
+    array dd 1, 2, 3, 4, 5
+    array_size equ ($ - array) / 4  ; Calculate size
+    sum_msg db "Sum: %d", 0ah, 0
+    
+section .text
+    extern printf
+    global main
+    
+main:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 32
+    
+    ; Calculate sum
+    xor eax, eax        ; sum = 0
+    xor ecx, ecx        ; index = 0
+    
+sum_loop:
+    add eax, [array + ecx * 4]  ; sum += array[index]
