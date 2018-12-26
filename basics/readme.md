@@ -777,3 +777,22 @@ factorial:
 base_case:
     mov rax, 1          ; return 1
     leave
+    ret
+```
+
+---
+
+## Quick Reference Commands
+
+### Compilation Commands
+```bash
+# Assemble
+nasm -f win64 program.asm
+
+# Link with GCC
+gcc program.obj -o program.exe
+
+# Link with Microsoft linker
+link program.obj /subsystem:console /entry:main /defaultlib:kernel32.lib /defaultlib:msvcrt.lib
+
+# One-liner compilation
