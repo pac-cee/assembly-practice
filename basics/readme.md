@@ -815,3 +815,22 @@ nasm -O2                # Optimize
 1. **Program structure** (sections, global main)
 2. **Basic instructions** (mov, add, sub, cmp, jmp)
 3. **Registers** (RAX, RBX, RCX, RDX basics)
+4. **Memory addressing** ([variable], [register])
+5. **Function calls** (call, ret, stack management)
+6. **C library integration** (printf, scanf)
+
+### For Intermediate:
+1. **All addressing modes**
+2. **String operations**
+3. **Multiplication and division**
+4. **Bit manipulation**
+5. **Advanced control flow**
+6. **Proper function prologue/epilogue**
+
+### For Advanced:
+1. **SIMD instructions**
+2. **Floating point operations**
+3. **System calls**
+4. **Optimization techniques**
+5. **Inline assembly in C**
+6. **Reverse engineering applications**
