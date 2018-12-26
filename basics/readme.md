@@ -796,3 +796,22 @@ gcc program.obj -o program.exe
 link program.obj /subsystem:console /entry:main /defaultlib:kernel32.lib /defaultlib:msvcrt.lib
 
 # One-liner compilation
+nasm -f win64 program.asm && gcc program.obj -o program.exe
+```
+
+### Useful NASM Options
+```bash
+nasm -f win64           # 64-bit Windows object format
+nasm -l program.lst     # Generate listing file
+nasm -g                 # Include debug information
+nasm -O2                # Optimize
+```
+
+---
+
+## What's Most Important to Know?
+
+### For Beginners:
+1. **Program structure** (sections, global main)
+2. **Basic instructions** (mov, add, sub, cmp, jmp)
+3. **Registers** (RAX, RBX, RCX, RDX basics)
