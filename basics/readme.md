@@ -872,3 +872,14 @@ nasm -O2                # Optimize
 ---
 
 ## Performance Tips
+
+1. **Use registers when possible** - Much faster than memory
+2. **Avoid memory-to-memory operations** - Use register as intermediate
+3. **Use appropriate data sizes** - Don't use 64-bit when 32-bit suffices
+4. **Align data** - Aligned access is faster
+5. **Use bit shifting for powers of 2** - `shl eax, 1` instead of `imul eax, 2`
+6. **Clear registers efficiently** - `xor eax, eax` instead of `mov eax, 0`
+7. **Use string instructions for bulk operations**
+8. **Minimize function call overhead**
+
+This guide covers the essential concepts you need to master assembly programming with NASM on Windows. Start with the basics and gradually work your way up to more advanced topics. Practice with small programs and gradually increase complexity!
