@@ -853,3 +853,22 @@ nasm -O2                # Optimize
 - Temporary storage during function calls
 - Small, short-lived data
 
+**.data Section**
+- Global variables with initial values
+- String constants
+- Lookup tables
+- Configuration data
+
+**.bss Section**
+- Large arrays/buffers
+- Global variables without initial values
+- Memory that will be initialized at runtime
+
+**Heap (via malloc/free)**
+- Dynamic memory allocation
+- Large data structures
+- Memory whose size isn't known at compile time
+
+---
+
+## Performance Tips
