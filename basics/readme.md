@@ -834,3 +834,22 @@ nasm -O2                # Optimize
 4. **Optimization techniques**
 5. **Inline assembly in C**
 6. **Reverse engineering applications**
+
+---
+
+## Memory Usage Guidelines
+
+### When to Use Different Memory Areas:
+
+**Registers (Fastest)**
+- Temporary calculations
+- Loop counters
+- Function arguments/return values
+- Most frequently accessed data
+
+**Stack**
+- Local variables
+- Function parameters (if more than 4)
+- Temporary storage during function calls
+- Small, short-lived data
+
