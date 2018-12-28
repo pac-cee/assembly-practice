@@ -55,3 +55,22 @@ section .text
 main:
     push    rbp
     mov     rbp, rsp
+    sub     rsp, 32
+
+    call    initialize_game
+    call    game_loop
+    
+    xor     eax, eax
+    leave
+    ret
+
+initialize_game:
+    ; Initialize random seed
+    xor     rcx, rcx
+    call    time
+    mov     rcx, rax
+    call    srand
+    
+    ; Set initial game state
+    mov     dword [game_state], RUNNING
+    mov     dword [score], 0
