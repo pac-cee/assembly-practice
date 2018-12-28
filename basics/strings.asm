@@ -17,3 +17,22 @@ section .text
     extern gets
 
 main:
+    push    rbp
+    mov     rbp, rsp
+    sub     rsp, 32
+
+    ; Prompt for input
+    lea     rcx, [input_prompt]
+    call    printf
+
+    ; Get string input
+    lea     rcx, [input_buffer]
+    call    gets
+
+    ; Calculate string length
+    lea     rsi, [input_buffer]
+    xor     rcx, rcx      ; Length counter
+count_loop:
+    cmp     byte [rsi], 0
+    je      count_done
+    inc     rcx
