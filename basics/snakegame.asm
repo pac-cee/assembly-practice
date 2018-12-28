@@ -17,3 +17,22 @@ section .data
     RIGHT           equ 1
     DOWN            equ 2
     LEFT            equ 3
+    
+    ; Messages
+    game_over_msg   db "Game Over! Score: %d", 10, 0
+    score_msg       db "Score: %d", 0
+    clear_screen    db 27,"[2J",27,"[H",0  ; ANSI escape codes
+
+section .bss
+    ; Game state
+    game_state      resd 1
+    score           resd 1
+    direction       resd 1
+    
+    ; Snake data
+    snake_x         resd 100  ; X coordinates of snake segments
+    snake_y         resd 100  ; Y coordinates of snake segments
+    snake_length    resd 1
+    
+    ; Food position
+    food_x          resd 1
