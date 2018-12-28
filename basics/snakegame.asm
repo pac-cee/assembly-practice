@@ -74,3 +74,22 @@ initialize_game:
     ; Set initial game state
     mov     dword [game_state], RUNNING
     mov     dword [score], 0
+    mov     dword [direction], RIGHT
+    
+    ; Initialize snake
+    mov     dword [snake_length], 3
+    mov     dword [snake_x], 40    ; Start in middle
+    mov     dword [snake_y], 12
+    
+    ; Place initial food
+    call    spawn_food
+    ret
+
+game_loop:
+    ; Main game loop
+.loop:
+    cmp     dword [game_state], GAMEOVER
+    je      .end
+
+    ; Check for keyboard input
+    call    _kbhit
