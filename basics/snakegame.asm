@@ -36,3 +36,22 @@ section .bss
     
     ; Food position
     food_x          resd 1
+    food_y          resd 1
+    
+    ; Screen buffer
+    screen_buffer   resb SCREEN_WIDTH * SCREEN_HEIGHT
+
+section .text
+    default rel
+    global main
+    extern printf
+    extern _kbhit
+    extern _getch
+    extern Sleep
+    extern time
+    extern srand
+    extern rand
+
+main:
+    push    rbp
+    mov     rbp, rsp
