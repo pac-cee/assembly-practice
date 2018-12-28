@@ -93,3 +93,22 @@ game_loop:
 
     ; Check for keyboard input
     call    _kbhit
+    test    eax, eax
+    jz      .no_input
+    
+    call    _getch
+    call    handle_input
+
+.no_input:
+    call    update_game
+    call    draw_screen
+    
+    ; Sleep for game speed
+    mov     rcx, 100        ; 100ms delay
+    call    Sleep
+    
+    jmp     .loop
+
+.end:
+    call    show_game_over
+    ret
