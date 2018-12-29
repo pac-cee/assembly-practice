@@ -36,3 +36,20 @@ main:
 
     ; Get second number
     lea     rcx, [format_in] ; Load address of format_in into rcx
+    lea     rdx, [num2]      ; Load address of num2 into rdx
+    call    scanf            ; Call scanf to read the second number
+
+    ; Perform addition
+    mov     eax, [num1]      ; Load num1 into eax
+    add     eax, [num2]      ; Add num2 to eax
+    mov     [sum], eax       ; Store the result in sum
+
+    ; Print the result
+    lea     rcx, [result_msg] ; Load address of result_msg into rcx
+    mov     rdx, [sum]        ; Load the sum into rdx
+    call    printf            ; Call printf to display the result
+
+    ; Clean up and exit
+    mov     rsp, rbp          ; Restore stack pointer
+    pop     rbp               ; Restore base pointer
+    ret                       ; Return from main
