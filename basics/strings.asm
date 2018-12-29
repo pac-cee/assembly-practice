@@ -55,3 +55,16 @@ count_done:
     dec     rdi
 reverse_loop:
     mov     al, [rsi]
+    mov     [rdi], al
+    inc     rsi
+    dec     rdi
+    loop    reverse_loop
+
+    ; Print reversed string
+    lea     rcx, [reverse_msg]
+    lea     rdx, [reverse_buffer]
+    call    printf
+
+    xor     eax, eax
+    leave
+    ret
