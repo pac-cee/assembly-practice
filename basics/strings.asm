@@ -36,3 +36,22 @@ count_loop:
     cmp     byte [rsi], 0
     je      count_done
     inc     rcx
+    inc     rsi
+    jmp     count_loop
+count_done:
+
+    ; Print length
+    push    rcx           ; Save length
+    lea     rcx, [length_msg]
+    mov     rdx, rcx
+    call    printf
+    pop     rcx
+
+    ; Reverse the string
+    lea     rsi, [input_buffer]
+    lea     rdi, [reverse_buffer]
+    add     rdi, rcx      ; Point to end of reverse buffer
+    mov     byte [rdi], 0 ; Null terminate
+    dec     rdi
+reverse_loop:
+    mov     al, [rsi]
