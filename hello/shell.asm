@@ -36,3 +36,22 @@ remove_nl:
     cmp byte [ecx], 0x0A
     jne not_nl
     mov byte [ecx], 0
+    jmp done_nl
+not_nl:
+    inc ecx
+    dec edx
+    jnz remove_nl
+    
+done_nl:
+    ; Check for empty input
+    cmp byte [input], 0
+    je main_loop
+
+    ; Fork
+    mov eax, 2          ; sys_fork
+    int 0x80
+    cmp eax, 0
+    jl exit             ; error
+    je child            ; child process
+
+parent:
