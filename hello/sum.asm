@@ -36,3 +36,22 @@ main:
     mov     r12d, 0           ; i = 0
 
 input_loop:
+    ; Check if we've processed all numbers
+    cmp     r12d, [count]
+    jge     print_result
+
+    ; Print prompt for number
+    lea     rcx, [prompt_num]
+    mov     edx, r12d
+    inc     edx               ; i + 1
+    call    printf
+
+    ; Get number
+    lea     rcx, [format_in]
+    lea     rdx, [number]
+    call    scanf
+
+    ; Add to sum
+    mov     eax, [number]
+    add     [sum], eax
+
