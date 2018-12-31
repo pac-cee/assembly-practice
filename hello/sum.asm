@@ -17,3 +17,22 @@ section .text
 
 main:
     push    rbp
+    mov     rbp, rsp
+    sub     rsp, 32            ; Shadow space
+
+    ; Initialize sum to 0
+    mov     dword [sum], 0
+
+    ; Ask for count of numbers
+    lea     rcx, [prompt_count]
+    call    printf
+
+    ; Get count
+    lea     rcx, [format_in]
+    lea     rdx, [count]
+    call    scanf
+
+    ; Initialize loop counter
+    mov     r12d, 0           ; i = 0
+
+input_loop:
