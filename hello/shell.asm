@@ -74,3 +74,9 @@ child:
     ; If execve fails, exit
     mov eax, 1
     xor ebx, ebx
+    int 0x80
+
+exit:
+    mov eax, 1
+    xor ebx, ebx
+    int 0x80
