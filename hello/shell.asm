@@ -55,3 +55,22 @@ done_nl:
     je child            ; child process
 
 parent:
+    ; Wait for child
+    mov eax, 7          ; sys_waitpid
+    mov ebx, -1
+    mov ecx, 0
+    int 0x80
+    jmp main_loop
+
+child:
+    ; Prepare argv
+    mov dword [buffer], input
+    mov dword [buffer+4], 0
+    mov eax, 11         ; sys_execve
+    mov ebx, input      ; filename
+    mov ecx, buffer     ; argv
+    mov edx, 0          ; envp
+    int 0x80
+    ; If execve fails, exit
+    mov eax, 1
+    xor ebx, ebx
