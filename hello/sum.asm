@@ -55,3 +55,16 @@ input_loop:
     mov     eax, [number]
     add     [sum], eax
 
+    ; Increment counter
+    inc     r12d
+    jmp     input_loop
+
+print_result:
+    ; Print sum
+    lea     rcx, [result_msg]
+    mov     edx, [sum]
+    call    printf
+
+    xor     eax, eax
+    leave
+    ret
