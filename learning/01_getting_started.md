@@ -36,3 +36,22 @@ main:
     call GetStdHandle
     
     ; Write to console
+    mov rcx, rax                    ; Handle
+    lea rdx, [message]              ; Buffer
+    mov r8d, message_length         ; Length
+    lea r9, [rsp + 40]              ; lpNumberOfBytesWritten
+    mov qword [rsp + 32], 0         ; lpOverlapped (NULL)
+    call WriteFile
+    
+    ; Exit
+    xor eax, eax
+    leave
+    ret
+```
+
+## Key Concepts
+
+### 1. Sections
+- `.data`: Contains initialized data
+- `.bss`: Contains uninitialized data
+- `.text`: Contains executable code
