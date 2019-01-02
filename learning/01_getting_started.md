@@ -17,3 +17,22 @@ Here's a simple "Hello, World!" program in x86-64 assembly for Windows:
 section .data
     message db 'Hello, World!', 0   ; Define null-terminated string
     message_length equ $ - message   ; Calculate string length
+
+section .text
+    global main
+    extern WriteFile
+    extern GetStdHandle
+    
+    ; Windows constants
+    STD_OUTPUT_HANDLE equ -11
+
+main:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 32                     ; Shadow space
+    
+    ; Get standard output handle
+    mov ecx, STD_OUTPUT_HANDLE
+    call GetStdHandle
+    
+    ; Write to console
