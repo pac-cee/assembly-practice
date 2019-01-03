@@ -55,3 +55,22 @@ main:
 - `.data`: Contains initialized data
 - `.bss`: Contains uninitialized data
 - `.text`: Contains executable code
+
+### 2. Registers
+x86-64 has 16 general-purpose 64-bit registers:
+- `RAX`, `RBX`, `RCX`, `RDX`: General purpose
+- `RSI`, `RDI`: Source/Destination index
+- `RBP`: Base pointer
+- `RSP`: Stack pointer
+- `R8`-`R15`: Additional general purpose registers
+
+### 3. Instructions
+Basic instruction format:
+```
+operation destination, source
+```
+
+Common instructions:
+- `mov`: Move data
+- `add`/`sub`: Arithmetic
+- `push`/`pop`: Stack operations
