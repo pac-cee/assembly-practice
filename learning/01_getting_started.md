@@ -112,3 +112,22 @@ _start:
 
 3. **Register Operations**
    - Write a program that:
+     1. Moves 5 into RAX
+     2. Moves 10 into RBX
+     3. Adds them and stores the result in RCX
+     4. Multiplies the result by 2 (use `imul`)
+
+## Next Steps
+
+In the next lesson, we'll dive deeper into registers and arithmetic operations, and learn how to work with different data sizes and signed/unsigned numbers.
+
+## Common Pitfalls
+
+1. **Register Sizes**: Remember that operations must match register sizes
+   - `mov rax, 1` (64-bit)
+   - `mov eax, 1` (32-bit)
+   - `mov ax, 1`  (16-bit)
+   - `mov al, 1`  (8-bit)
+
+2. **Memory Access**: Always specify the size when accessing memory
+   - `mov [var], 5` is ambiguous
