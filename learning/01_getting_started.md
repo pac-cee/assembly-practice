@@ -74,3 +74,22 @@ Common instructions:
 - `mov`: Move data
 - `add`/`sub`: Arithmetic
 - `push`/`pop`: Stack operations
+- `call`/`ret`: Function calls
+- `jmp`/`je`/`jne`: Jumps
+
+## Your First Program
+
+Let's create a simple program that adds two numbers:
+
+```assembly
+; File: add.asm
+; Description: Adds two numbers and returns the result
+
+section .text
+    global main
+
+extern ExitProcess
+
+global _start
+_start:
+    mov rax, 10         ; First number
