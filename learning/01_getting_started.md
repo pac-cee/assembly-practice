@@ -131,3 +131,12 @@ In the next lesson, we'll dive deeper into registers and arithmetic operations, 
 
 2. **Memory Access**: Always specify the size when accessing memory
    - `mov [var], 5` is ambiguous
+   - Use `mov byte [var], 5` or `mov qword [var], 5`
+
+3. **Stack Alignment**: Keep the stack 16-byte aligned before function calls
+
+## Additional Resources
+
+- [NASM Tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial/)
+- [x86 Assembly Guide](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
+- [Compiler Explorer](https://godbolt.org/) - See how high-level code translates to assembly
