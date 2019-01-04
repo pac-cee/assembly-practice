@@ -93,3 +93,22 @@ extern ExitProcess
 global _start
 _start:
     mov rax, 10         ; First number
+    mov rbx, 20         ; Second number
+    add rax, rbx        ; Add them
+    
+    ; Exit with result in RAX
+    mov rcx, rax        ; Exit code
+    call ExitProcess
+```
+
+## Exercises
+
+1. **Hello, World!**
+   - Modify the hello.asm program to print your name instead of "Hello, World!"
+
+2. **Simple Arithmetic**
+   - Create a program that subtracts two numbers and prints the result
+   - Hint: Use the `sub` instruction
+
+3. **Register Operations**
+   - Write a program that:
