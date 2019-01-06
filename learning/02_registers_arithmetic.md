@@ -17,3 +17,22 @@ RAX         EAX       AX       AH            AL
 RBX         EBX       BX       BH            BL
 RCX         ECX       CX       CH            CL
 RDX         EDX       DX       DH            DL
+RSI         ESI       SI       -             SIL
+RDI         EDI       DI       -             DIL
+RBP         EBP       BP       -             BPL
+RSP         ESP       SP       -             SPL
+R8          R8D       R8W      -             R8B
+...         ...       ...      ...           ...
+R15         R15D      R15W     -             R15B
+```
+
+## Basic Arithmetic Instructions
+
+### 1. Addition and Subtraction
+```assembly
+add  dest, src     ; dest = dest + src
+sub  dest, src     ; dest = dest - src
+inc  dest          ; dest = dest + 1
+dec  dest          ; dest = dest - 1
+neg  dest          ; dest = -dest (two's complement)
+```
