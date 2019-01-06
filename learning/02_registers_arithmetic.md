@@ -36,3 +36,22 @@ inc  dest          ; dest = dest + 1
 dec  dest          ; dest = dest - 1
 neg  dest          ; dest = -dest (two's complement)
 ```
+
+### 2. Multiplication and Division
+```assembly
+; Signed multiplication
+imul dest, src     ; dest = dest * src (signed)
+
+; Unsigned multiplication
+mul  src           ; RAX = RAX * src (unsigned)
+
+; Division
+idiv divisor       ; Signed division: RDX:RAX / divisor → RAX (quotient), RDX (remainder)
+div  divisor       ; Unsigned division
+```
+
+## Example: Simple Calculator
+
+```assembly
+; File: calculator.asm
+; A simple calculator that adds, subtracts, multiplies, and divides
