@@ -55,3 +55,22 @@ div  divisor       ; Unsigned division
 ```assembly
 ; File: calculator.asm
 ; A simple calculator that adds, subtracts, multiplies, and divides
+
+section .data
+    num1    dq 30
+    num2    dq 7
+    result  dq 0
+    
+    ; Format strings for printf
+    fmt_add db "%ld + %ld = %ld", 10, 0
+    fmt_sub db "%ld - %ld = %ld", 10, 0
+    fmt_mul db "%ld * %ld = %ld", 10, 0
+    fmt_div db "%ld / %ld = %ld, remainder %ld", 10, 0
+
+section .text
+    global main
+    extern printf
+
+main:
+    push rbp
+    mov rbp, rsp
