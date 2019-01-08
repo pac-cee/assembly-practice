@@ -93,3 +93,22 @@ main:
     
     ; 2. Subtraction
     mov rcx, rax
+    sub rcx, rbx       ; rcx = rax - rbx
+    
+    ; Print subtraction result
+    mov rdx, rax
+    mov r8, rbx
+    mov r9, rcx
+    lea rcx, [fmt_sub]
+    call printf
+    
+    ; 3. Multiplication
+    mov rcx, rax
+    imul rcx, rbx      ; rcx = rax * rbx
+    
+    ; Print multiplication result
+    mov rdx, rax
+    mov r8, rbx
+    mov r9, rcx
+    lea rcx, [fmt_mul]
+    call printf
