@@ -74,3 +74,22 @@ section .text
 main:
     push rbp
     mov rbp, rsp
+    sub rsp, 32        ; Shadow space
+    
+    ; Load numbers
+    mov rax, [num1]
+    mov rbx, [num2]
+    
+    ; 1. Addition
+    mov rcx, rax
+    add rcx, rbx       ; rcx = rax + rbx
+    
+    ; Print addition result
+    mov rdx, rax       ; First number
+    mov r8, rbx        ; Second number
+    mov r9, rcx        ; Result
+    lea rcx, [fmt_add]
+    call printf
+    
+    ; 2. Subtraction
+    mov rcx, rax
