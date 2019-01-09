@@ -112,3 +112,22 @@ main:
     mov r9, rcx
     lea rcx, [fmt_mul]
     call printf
+    
+    ; 4. Division
+    mov rax, [num1]    ; Dividend (low 64 bits)
+    cqo                ; Sign-extend RAX into RDX:RAX
+    idiv qword [num2]  ; RDX:RAX / num2 → RAX (quotient), RDX (remainder)
+    
+    ; Print division result
+    mov rdx, [num1]    ; First number
+    mov r8, [num2]     ; Second number
+    mov r9, rax        ; Quotient
+    mov qword [rsp + 32], rdx  ; Remainder (5th argument on stack)
+    lea rcx, [fmt_div]
+    call printf
+    
+    ; Clean up and return
+    xor eax, eax       ; Return 0
+    leave
+    ret
+```
