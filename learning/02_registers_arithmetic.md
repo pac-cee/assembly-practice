@@ -150,3 +150,22 @@ sar  dest, count  ; Shift right (arithmetic)
    - Write a program that:
      1. Loads 0x12345678 into RAX
      2. Swaps the high and low 32 bits of RAX
+     3. Rotates the result right by 4 bits
+
+2. **Factorial Calculation**
+   - Write a function that calculates the factorial of a number using a loop
+   - Input: Number in RAX
+   - Output: Factorial in RAX
+
+3. **Bit Counting**
+   - Write a function that counts the number of set bits (1s) in a 64-bit number
+   - Input: Number in RAX
+   - Output: Count in RBX
+
+## Common Mistakes
+
+1. **Forgetting to zero/sign extend**
+   - Use `movsx` (sign extend) or `movzx` (zero extend) when moving between different-sized registers
+   - Example: `movsx eax, byte [mem]`
+
+2. **Incorrect operand sizes**
