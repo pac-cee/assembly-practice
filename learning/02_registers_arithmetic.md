@@ -169,3 +169,22 @@ sar  dest, count  ; Shift right (arithmetic)
    - Example: `movsx eax, byte [mem]`
 
 2. **Incorrect operand sizes**
+   - Ensure source and destination sizes match
+   - Example: `add al, 5` (byte), not `add al, 500` (too large for byte)
+
+3. **Forgetting to save registers**
+   - Some registers are preserved across function calls (RBX, RBP, R12-R15)
+   - Others can be modified by called functions
+
+## Practice Problem
+
+Write a program that implements the following C function in assembly:
+
+```c
+// Returns (a * b) + (c / d) - e
+int64_t calculate(int64_t a, int64_t b, int64_t c, int64_t d, int64_t e) {
+    return (a * b) + (c / d) - e;
+}
+```
+
+In the next lesson, we'll learn about memory addressing modes and how to work with arrays and data structures.
