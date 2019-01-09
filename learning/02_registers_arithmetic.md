@@ -131,3 +131,22 @@ main:
     leave
     ret
 ```
+
+## Bitwise Operations
+
+```assembly
+and  dest, src    ; Bitwise AND
+or   dest, src    ; Bitwise OR
+xor  dest, src    ; Bitwise XOR
+not  dest         ; Bitwise NOT
+shl  dest, count  ; Shift left
+shr  dest, count  ; Shift right (logical)
+sar  dest, count  ; Shift right (arithmetic)
+```
+
+## Exercises
+
+1. **Register Operations**
+   - Write a program that:
+     1. Loads 0x12345678 into RAX
+     2. Swaps the high and low 32 bits of RAX
