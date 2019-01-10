@@ -188,3 +188,17 @@ int64_t calculate(int64_t a, int64_t b, int64_t c, int64_t d, int64_t e) {
 ```
 
 In the next lesson, we'll learn about memory addressing modes and how to work with arrays and data structures.
+
+## Quick Reference
+
+| Instruction | Description                    | Example                  |
+|-------------|--------------------------------|--------------------------|
+| `mov`       | Move data                      | `mov rax, 5`            |
+| `add`       | Add                            | `add rax, rbx`           |
+| `sub`       | Subtract                       | `sub rax, 10`            |
+| `imul`      | Signed multiply                | `imul rax, rbx`          |
+| `idiv`      | Signed divide                  | `idiv rbx`               |
+| `and/or/xor` | Bitwise operations             | `and rax, rbx`           |
+| `shl/shr`   | Shift left/right               | `shl rax, 3`             |
+| `inc/dec`   | Increment/Decrement            | `inc rax`                |
+| `neg`       | Two's complement negation      | `neg rax`                |
