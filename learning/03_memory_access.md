@@ -74,3 +74,22 @@ section .text
 
 main:
     push rbp
+    mov rbp, rsp
+    
+    ; Example 1: Sum elements in array
+    mov rcx, len            ; Counter
+    xor rax, rax            ; Sum = 0
+    lea rsi, [numbers]      ; Pointer to array
+    
+sum_loop:
+    add rax, [rsi]         ; Add current element to sum
+    add rsi, 8              ; Move to next element (8 bytes)
+    loop sum_loop           ; Decrement RCX and loop if not zero
+    
+    ; Now RAX contains the sum
+    
+    ; Example 2: String concatenation
+    lea rdi, [result]       ; Destination buffer
+    lea rsi, [str1]         ; First string
+    call str_copy           ; Copy first string
+    
