@@ -36,3 +36,22 @@ mov rax, [rsi + rdi]  ; RAX = *(RSI + RDI)
 ```assembly
 mov rax, [rsi + rdi*8]  ; RAX = *(RSI + RDI*8) - useful for arrays
 ```
+
+## Data Movement Instructions
+
+### 1. Basic Move
+```assembly
+mov dest, src    ; Copy src to dest
+```
+
+### 2. Load Effective Address (LEA)
+```assembly
+lea rdi, [rsi + rdx*4 + 10]  ; Calculate address without memory access
+```
+
+### 3. Exchange
+```assembly
+xchg rax, rbx  ; Swap RAX and RBX
+```
+
+## Example: Working with Arrays
