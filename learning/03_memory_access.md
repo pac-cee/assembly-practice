@@ -150,3 +150,22 @@ Proper alignment improves performance. Always align data to its natural boundary
 - 4-byte: address divisible by 4
 - 8-byte: address divisible by 8
 
+```assembly
+section .data
+    align 8           ; Align next data item to 8 bytes
+    my_qword dq 0     ; Now properly aligned
+```
+
+## Exercises
+
+1. **Array Operations**
+   - Write a function that finds the maximum value in an array of 64-bit integers
+   - Input: RDI = array address, RSI = length
+   - Output: RAX = maximum value
+
+2. **String Length**
+   - Implement `strlen` function that returns the length of a null-terminated string
+   - Input: RDI = string address
+   - Output: RAX = string length
+
+3. **Memory Copy**
