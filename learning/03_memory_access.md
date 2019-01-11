@@ -131,3 +131,22 @@ str_copy:
 ```
 
 ## Data Types and Sizes
+
+| Type  | Size  | NASM Syntax |
+|-------|-------|-------------|
+| Byte  | 8-bit | `db`, `resb` |
+| Word  | 16-bit| `dw`, `resw` |
+| Dword | 32-bit| `dd`, `resd` |
+| Qword | 64-bit| `dq`, `resq` |
+| Tbyte | 80-bit| `dt`, `rest` |
+| Oword | 128-bit| `do`, `reso` |
+
+
+## Memory Alignment
+
+Proper alignment improves performance. Always align data to its natural boundary:
+- 1-byte: no alignment needed
+- 2-byte: even address
+- 4-byte: address divisible by 4
+- 8-byte: address divisible by 8
+
