@@ -112,3 +112,22 @@ str_copy:
     push rcx
     push rdi
     push rsi
+    
+    ; Find end of destination string
+    mov rcx, -1
+    xor al, al
+    cld
+    repne scasb
+    dec rdi                 ; Back up over null terminator
+    
+    ; Copy source to destination
+    mov rcx, -1
+    rep movsb               ; Copy until null terminator
+    
+    pop rsi
+    pop rdi
+    pop rcx
+    ret
+```
+
+## Data Types and Sizes
