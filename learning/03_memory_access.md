@@ -93,3 +93,22 @@ sum_loop:
     lea rsi, [str1]         ; First string
     call str_copy           ; Copy first string
     
+    lea rsi, [str2]         ; Second string
+    call str_copy           ; Concatenate second string
+    
+    ; Print result
+    lea rcx, [result]
+    call printf
+    
+    ; Exit
+    xor eax, eax
+    leave
+    ret
+
+; String copy function
+; RDI: destination
+; RSI: source
+str_copy:
+    push rcx
+    push rdi
+    push rsi
