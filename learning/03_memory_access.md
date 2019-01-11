@@ -55,3 +55,22 @@ xchg rax, rbx  ; Swap RAX and RBX
 ```
 
 ## Example: Working with Arrays
+
+```assembly
+; File: arrays.asm
+; Demonstrates array access and string operations
+
+section .data
+    numbers dq 10, 20, 30, 40, 50  ; Array of quad-words
+    len     equ ($ - numbers) / 8   ; Length of array
+    
+    str1    db "Hello, ", 0
+    str2    db "Assembly!", 0
+    result  times 32 db 0           ; Buffer for concatenated string
+
+section .text
+    global main
+    extern printf
+
+main:
+    push rbp
