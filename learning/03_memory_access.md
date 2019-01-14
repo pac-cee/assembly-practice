@@ -188,3 +188,22 @@ section .data
      mov rax, [rsi]    ; Loads 8 bytes
      mov eax, [rsi]    ; Loads 4 bytes, zero-extends to RAX
      ```
+
+3. **Memory alignment**
+   - Unaligned memory access can cause performance penalties or exceptions
+   - Use `align` directive for critical data
+
+## Practice Problem
+
+Write a function that reverses an array of 64-bit integers in place:
+
+```assembly
+; Input: RDI = array address, RSI = length
+reverse_array:
+    ; Your code here
+    ret
+```
+
+In the next lesson, we'll dive into control flow instructions and how to implement conditionals and loops in assembly.
+
+## Quick Reference
