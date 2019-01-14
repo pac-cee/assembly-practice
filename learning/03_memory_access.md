@@ -207,3 +207,22 @@ reverse_array:
 In the next lesson, we'll dive into control flow instructions and how to implement conditionals and loops in assembly.
 
 ## Quick Reference
+
+### Memory Instructions
+| Instruction | Description                    | Example                  |
+|-------------|--------------------------------|--------------------------|
+| `mov`       | Move data                      | `mov rax, [rsi]`        |
+| `lea`       | Load effective address         | `lea rax, [rsi + 8]`    |
+| `xchg`      | Exchange                       | `xchg rax, rbx`         |
+| `cmpxchg`   | Compare and exchange          | `cmpxchg [mem], rbx`    |
+| `xadd`      | Exchange and add              | `xadd [mem], rax`       |
+
+### String Operations
+| Instruction | Description                    | Example                  |
+|-------------|--------------------------------|--------------------------|
+| `movs`      | Move string                   | `movsb`, `movsw`, etc.  |
+| `cmps`      | Compare strings               | `cmpsb`, `cmpsw`, etc.  |
+| `scas`      | Scan string                   | `scasb`, `scasw`, etc.  |
+| `lods`      | Load string                   | `lodsb`, `lodsw`, etc.  |
+| `stos`      | Store string                  | `stosb`, `stosw`, etc.  |
+
