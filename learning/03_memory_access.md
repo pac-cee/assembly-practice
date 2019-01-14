@@ -169,3 +169,22 @@ section .data
    - Output: RAX = string length
 
 3. **Memory Copy**
+   - Write a function that copies a block of memory
+   - Input: RDI = destination, RSI = source, RDX = byte count
+   - Handle overlapping memory regions correctly
+
+## Common Pitfalls
+
+1. **Forgetting to specify size**
+   - Always specify the size when accessing memory:
+     ```assembly
+     mov [rsi], 5       ; Error: size not specified
+     mov qword [rsi], 5 ; Correct
+     ```
+
+2. **Mixing register sizes**
+   - Be consistent with register sizes:
+     ```assembly
+     mov rax, [rsi]    ; Loads 8 bytes
+     mov eax, [rsi]    ; Loads 4 bytes, zero-extends to RAX
+     ```
