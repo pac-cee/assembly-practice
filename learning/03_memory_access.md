@@ -226,3 +226,10 @@ In the next lesson, we'll dive into control flow instructions and how to impleme
 | `lods`      | Load string                   | `lodsb`, `lodsw`, etc.  |
 | `stos`      | Store string                  | `stosb`, `stosw`, etc.  |
 
+### Memory Ordering
+| Instruction | Description                    | Example                  |
+|-------------|--------------------------------|--------------------------|
+| `mfence`    | Memory fence                  | `mfence`                |
+| `sfence`    | Store fence                   | `sfence`                |
+| `lfence`    | Load fence                    | `lfence`                |
+| `lock`      | Atomic operation prefix       | `lock xadd [mem], rax`  |
