@@ -36,3 +36,22 @@ test op1, op2   ; Sets flags based on (op1 & op2)
 
 ```assembly
 ; File: compare.asm
+; Compares two numbers and prints the larger one
+
+section .data
+    a dq 42
+    b dq 24
+    fmt db "The larger number is: %ld", 10, 0
+
+section .text
+    global main
+    extern printf
+
+main:
+    push rbp
+    mov rbp, rsp
+    
+    mov rax, [a]
+    mov rbx, [b]
+    
+    cmp rax, rbx
