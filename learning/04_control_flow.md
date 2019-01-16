@@ -55,3 +55,22 @@ main:
     mov rbx, [b]
     
     cmp rax, rbx
+    jg a_is_larger
+    
+    ; b is larger or equal
+    mov rdx, rbx
+    jmp print_result
+    
+a_is_larger:
+    mov rdx, rax
+    
+print_result:
+    lea rcx, [fmt]
+    call printf
+    
+    xor eax, eax
+    leave
+    ret
+```
+
+## Loops
