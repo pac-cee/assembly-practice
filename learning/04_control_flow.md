@@ -74,3 +74,22 @@ print_result:
 ```
 
 ## Loops
+
+### 1. Simple Loop
+```assembly
+    mov rcx, 10    ; Counter
+loop_start:
+    ; Loop body
+    dec rcx
+    jnz loop_start
+```
+
+### 2. LOOP Instruction
+```assembly
+    mov rcx, 10    ; Counter
+loop_start:
+    ; Loop body
+    loop loop_start
+```
+
+## Switch-Case Implementation
