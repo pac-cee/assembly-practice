@@ -112,3 +112,22 @@ section .data
     msg_default db "Default case", 10, 0
 
 section .text
+    global main
+    extern printf
+
+main:
+    push rbp
+    mov rbp, rsp
+    
+    mov eax, [x]    ; Get the value to switch on
+    
+    ; Bounds check
+    cmp eax, 2
+    ja default_case
+    
+    ; Jump to the appropriate case
+    lea rbx, [rel jumptable]
+    jmp [rbx + rax*8]
+    
+case0:
+    lea rcx, [rel msg0]
