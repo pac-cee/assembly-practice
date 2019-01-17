@@ -93,3 +93,22 @@ loop_start:
 ```
 
 ## Switch-Case Implementation
+
+```assembly
+; File: switch.asm
+; Implements a simple switch-case structure
+
+section .data
+    x dd 2          ; Input value
+    
+    ; Jump table
+    jumptable:
+        dq case0, case1, case2, case_default
+    
+    ; Messages
+    msg0 db "Case 0", 10, 0
+    msg1 db "Case 1", 10, 0
+    msg2 db "Case 2", 10, 0
+    msg_default db "Default case", 10, 0
+
+section .text
