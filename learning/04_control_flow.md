@@ -131,3 +131,22 @@ main:
     
 case0:
     lea rcx, [rel msg0]
+    jmp print_msg
+    
+case1:
+    lea rcx, [rel msg1]
+    jmp print_msg
+    
+case2:
+    lea rcx, [rel msg2]
+    jmp print_msg
+    
+default_case:
+    lea rcx, [rel msg_default]
+    
+print_msg:
+    call printf
+    
+    xor eax, eax
+    leave
+    ret
