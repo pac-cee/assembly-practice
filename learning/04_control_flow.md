@@ -150,3 +150,22 @@ print_msg:
     xor eax, eax
     leave
     ret
+```
+
+## Exercises
+
+1. **Factorial Function**
+   - Implement a function that calculates n! using a loop
+   - Input: n in RDI
+   - Output: n! in RAX
+
+2. **Prime Number Check**
+   - Write a function that checks if a number is prime
+   - Input: number in RDI
+   - Output: 1 if prime, 0 if not in RAX
+
+3. **String Comparison**
+   - Implement strcmp that compares two strings
+   - Input: RDI = str1, RSI = str2
+   - Output: 0 if equal, -1 if str1 < str2, 1 if str1 > str2
+
