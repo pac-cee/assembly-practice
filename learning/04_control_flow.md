@@ -169,3 +169,22 @@ print_msg:
    - Input: RDI = str1, RSI = str2
    - Output: 0 if equal, -1 if str1 < str2, 1 if str1 > str2
 
+## Common Pitfalls
+
+1. **Forgetting to set flags**
+   - Always use CMP or TEST before conditional jumps
+   - Example:
+     ```assembly
+     cmp rax, rbx
+     jg label    ; Correct
+     
+     jg label    ; Wrong - no comparison done
+     ```
+
+2. **Infinite loops**
+   - Ensure your loop has a termination condition
+   - Example of infinite loop:
+     ```assembly
+     mov rcx, 10
+     loop_start:
+         ; No modification of RCX
