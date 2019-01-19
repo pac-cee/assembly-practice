@@ -226,3 +226,9 @@ In the next lesson, we'll dive into functions, the stack, and calling convention
 | `jbe`/`jna` | Jump if ≤ (unsigned)   | CF=1 or ZF=1       |
 
 ### Loop Instructions
+| Instruction | Description                    | Operation                   |
+|-------------|--------------------------------|-----------------------------|
+| `loop`      | Decrement RCX and jump if ≠ 0  | RCX--; if (RCX≠0) jmp label |
+| `loope/loopz` | Loop while equal/zero        | RCX--; if (RCX≠0 && ZF=1) jmp |
+| `loopne/loopnz` | Loop while not equal/zero  | RCX--; if (RCX≠0 && ZF=0) jmp |
+| `jecxz`     | Jump if ECX=0                  | if (ECX==0) jmp label       |
