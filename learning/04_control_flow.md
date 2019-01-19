@@ -207,3 +207,22 @@ int count_bits(uint64_t n) {
 }
 ```
 
+In the next lesson, we'll dive into functions, the stack, and calling conventions.
+
+## Quick Reference
+
+### Conditional Jumps
+| Instruction | Description            | Flags Checked       |
+|-------------|------------------------|---------------------|
+| `je`/`jz`   | Jump if equal/zero     | ZF=1               |
+| `jne`/`jnz` | Jump if not equal/zero | ZF=0               |
+| `jg`/`jnle` | Jump if greater        | ZF=0 and SF=OF      |
+| `jge`/`jnl` | Jump if ≥              | SF=OF              |
+| `jl`/`jnge` | Jump if less           | SF≠OF              |
+| `jle`/`jng` | Jump if ≤              | ZF=1 or SF≠OF      |
+| `ja`/`jnbe` | Jump if above          | CF=0 and ZF=0      |
+| `jae`/`jnb` | Jump if ≥ (unsigned)   | CF=0               |
+| `jb`/`jnae` | Jump if < (unsigned)   | CF=1               |
+| `jbe`/`jna` | Jump if ≤ (unsigned)   | CF=1 or ZF=1       |
+
+### Loop Instructions
