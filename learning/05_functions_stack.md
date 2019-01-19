@@ -36,3 +36,22 @@ my_function:
 - First 4 integer/pointer args: RCX, RDX, R8, R9
 - First 4 floating-point args: XMM0, XMM1, XMM2, XMM3
 - Additional args: Right to left on the stack
+- Caller must allocate 32 bytes of "shadow space"
+- RAX, RCX, RDX, R8, R9, R10, R11 are volatile
+- RBX, RBP, RDI, RSI, R12-R15 are non-volatile
+
+### System V AMD64 ABI (Linux/macOS)
+- First 6 integer/pointer args: RDI, RSI, RDX, RCX, R8, R9
+- First 8 floating-point args: XMM0-XMM7
+- Additional args: Right to left on the stack
+- No shadow space required
+- RAX, RCX, RDX, RSI, RDI, R8-R11 are volatile
+- RBX, RBP, R12-R15 are non-volatile
+
+## Function Example
+
+```assembly
+; File: functions.asm
+; Demonstrates function calls and stack usage
+
+section .data
