@@ -188,3 +188,22 @@ print_msg:
      mov rcx, 10
      loop_start:
          ; No modification of RCX
+         jmp loop_start  ; Infinite loop!
+     ```
+
+## Practice Problem
+
+Implement the following C function in assembly:
+
+```c
+// Counts the number of set bits in a 64-bit integer
+int count_bits(uint64_t n) {
+    int count = 0;
+    while (n) {
+        count += n & 1;
+        n >>= 1;
+    }
+    return count;
+}
+```
+
