@@ -112,3 +112,22 @@ main:
     mov rdi, rcx       ; Format string
     mov rsi, rdx       ; Result
     xor eax, eax       ; 0 floating point args
+    call printf wrt ..plt
+    pop rdx            ; Restore result
+    %endif
+    
+    ; Return 0
+    xor eax, eax
+    leave
+    ret
+```
+
+## Recursion Example
+
+```assembly
+; File: factorial.asm
+; Recursive factorial function
+
+section .data
+    n dq 5
+    msg db "%d! = %d", 10, 0
