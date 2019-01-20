@@ -74,3 +74,22 @@ add_numbers:
     
     ; For Windows, move to System V registers
     %ifidn __OUTPUT_FORMAT__, win64
+    mov rdi, rcx
+    mov rsi, rdx
+    %endif
+    
+    ; Add the numbers
+    mov rax, rdi
+    add rax, rsi
+    
+    leave
+    ret
+
+main:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 32        ; Shadow space (Windows) or alignment (System V)
+    
+    ; Call add_numbers(5, 3)
+    %ifidn __OUTPUT_FORMAT__, win64
+    mov rcx, 5         ; First argument
