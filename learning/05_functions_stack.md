@@ -55,3 +55,22 @@ my_function:
 ; Demonstrates function calls and stack usage
 
 section .data
+    msg db "Result: %d", 10, 0
+
+section .text
+    global main
+    extern printf
+
+; int add(int a, int b)
+; Input: a = RCX, b = RDX (Windows)
+;        a = RDI, b = RSI (System V)
+; Output: RAX = a + b
+add_numbers:
+    push rbp
+    mov rbp, rsp
+    
+    ; Windows: a=RCX, b=RDX
+    ; System V: a=RDI, b=RSI
+    
+    ; For Windows, move to System V registers
+    %ifidn __OUTPUT_FORMAT__, win64
