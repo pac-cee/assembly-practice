@@ -93,3 +93,22 @@ main:
     ; Call add_numbers(5, 3)
     %ifidn __OUTPUT_FORMAT__, win64
     mov rcx, 5         ; First argument
+    mov rdx, 3         ; Second argument
+    %else
+    mov rdi, 5         ; First argument
+    mov rsi, 3         ; Second argument
+    %endif
+    
+    call add_numbers
+    
+    ; Print the result
+    mov rdx, rax       ; Result from add_numbers
+    lea rcx, [rel msg] ; Format string
+    %ifidn __OUTPUT_FORMAT__, win64
+    call printf
+    %else
+    ; On System V, we need to align the stack before calling printf
+    push rdx           ; Save result
+    mov rdi, rcx       ; Format string
+    mov rsi, rdx       ; Result
+    xor eax, eax       ; 0 floating point args
