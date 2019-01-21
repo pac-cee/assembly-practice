@@ -131,3 +131,22 @@ main:
 section .data
     n dq 5
     msg db "%d! = %d", 10, 0
+
+section .text
+    global main
+    extern printf
+
+; int64_t factorial(int64_t n)
+; Input: n in RDI (System V) or RCX (Windows)
+; Output: n! in RAX
+factorial:
+    push rbp
+    mov rbp, rsp
+    
+    ; Handle Windows calling convention
+    %ifidn __OUTPUT_FORMAT__, win64
+    mov rdi, rcx
+    %endif
+    
+    ; Base case: 0! = 1
+    cmp rdi, 0
