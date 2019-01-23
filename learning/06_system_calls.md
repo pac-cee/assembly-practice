@@ -226,3 +226,22 @@ section '.data' data readable writeable
     bytes_written dq 0
 
 section '.text' code readable executable
+
+start:
+    ; Get standard output handle
+    sub rsp, 40        ; Shadow space (32) + align stack (8)
+    
+    ; GetStdHandle(STD_OUTPUT_HANDLE)
+    mov rcx, -11       ; STD_OUTPUT_HANDLE = -11
+    call [GetStdHandle]
+    mov [stdout], rax
+    
+    ; Write to console
+    ; WriteFile(hConsoleOutput, lpBuffer, nNumberOfCharsToWrite, 
+    ;           lpNumberOfCharsWritten, lpReserved)
+    mov rcx, [stdout]           ; hConsoleOutput
+    lea rdx, [msg]              ; lpBuffer
+    mov r8d, msg_len            ; nNumberOfCharsToWrite
+    lea r9, [bytes_written]     ; lpNumberOfCharsWritten
+    mov qword [rsp + 32], 0     ; lpReserved (5th arg on stack)
+    call [WriteFile]
