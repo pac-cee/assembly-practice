@@ -245,3 +245,22 @@ main:
          ret
      ```
 
+## Practice Problem
+
+Implement a function that converts a 64-bit integer to a null-terminated string in a given base (2-16):
+
+```assembly
+; Input: RDI = number, RSI = buffer, RDX = base (2-16)
+; Output: RAX = pointer to the resulting string (same as input buffer)
+int_to_string:
+    ; Your implementation here
+    ret
+```
+
+In the next lesson, we'll explore system calls and input/output operations in assembly.
+
+## Quick Reference
+
+### Stack Operations
+| Instruction | Description                    | Effect                            |
+|-------------|--------------------------------|-----------------------------------|
