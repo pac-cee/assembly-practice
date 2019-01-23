@@ -36,3 +36,22 @@ System calls (syscalls) are the interface between user programs and the operatin
 
 section .data
     ; File names and data
+    filename db "example.txt", 0
+    text db "Hello, File I/O!", 10
+    text_len equ $ - text
+    
+    ; Messages
+    success_msg db "File written successfully!", 10
+    success_len equ $ - success_msg
+    
+    error_msg db "Error occurred!", 10
+    error_len equ $ - error_msg
+
+section .bss
+    fd resq 1    ; File descriptor
+
+section .text
+    global _start
+
+_start:
+    ; Open file (create if not exists, write-only, truncate)
