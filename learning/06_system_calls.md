@@ -112,3 +112,22 @@ exit:
     syscall
 ```
 
+## Console I/O Example (Linux)
+
+```assembly
+; File: console_io.asm
+; Demonstrates console I/O using system calls (Linux)
+
+section .data
+    prompt db "Enter your name: ", 0
+    prompt_len equ $ - prompt
+    
+    greeting db "Hello, ", 0
+    greeting_len equ $ - greeting
+    
+    newline db 10          ; Newline character
+    
+section .bss
+    name resb 32          ; Buffer for name (31 chars + null)
+    name_len equ 32
+
