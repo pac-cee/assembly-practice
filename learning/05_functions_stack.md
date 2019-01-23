@@ -264,3 +264,22 @@ In the next lesson, we'll explore system calls and input/output operations in as
 ### Stack Operations
 | Instruction | Description                    | Effect                            |
 |-------------|--------------------------------|-----------------------------------|
+| `push reg`  | Push register onto stack       | RSP -= 8; [RSP] = reg            |
+| `pop reg`   | Pop from stack to register     | reg = [RSP]; RSP += 8            |
+| `enter`     | Create stack frame             | push rbp; mov rbp, rsp; sub rsp, N |
+| `leave`     | Destroy stack frame           | mov rsp, rbp; pop rbp            |
+| `call addr` | Call function                 | push rip; jmp addr               |
+| `ret`       | Return from function          | pop rip; jmp rip                  |
+
+### Common Function Prologues/Epilogues
+
+**Windows x64 Prologue:**
+```assembly
+my_function:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 32        ; Shadow space + locals
+    push rsi           ; Save non-volatile regs if used
+    push rdi
+    push rbx
+    ; Function body
