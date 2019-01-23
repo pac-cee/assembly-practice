@@ -207,3 +207,22 @@ main:
 1. **Fibonacci Sequence**
    - Implement a recursive function to compute the nth Fibonacci number
    - Input: n in RDI (System V) or RCX (Windows)
+   - Output: nth Fibonacci number in RAX
+
+2. **String Reverse**
+   - Write a function that reverses a string in-place
+   - Input: RDI = string address (null-terminated)
+   - No return value (modifies string in place)
+
+3. **Stack Frame Analysis**
+   - Draw the stack frame for a function with 3 local variables and 2 parameters
+   - Show the values of RBP and RSP at each point
+
+## Common Pitfalls
+
+1. **Stack Alignment**
+   - The stack must be 16-byte aligned before function calls
+   - Always allocate stack space in multiples of 16 bytes
+   - Example:
+     ```assembly
+     ; Correct
