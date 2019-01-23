@@ -207,3 +207,22 @@ strlen:
 
 ```assembly
 ; File: win32_hello.asm
+; Demonstrates Windows API calls
+
+; Windows x64 calling convention:
+; RCX, RDX, R8, R9, then stack (right to left)
+; Caller must allocate 32 bytes of shadow space
+
+format PE64 console
+entry start
+
+include 'win64a.inc'
+
+section '.data' data readable writeable
+    msg db 'Hello, Windows!', 13, 10, 0
+    msg_len = $ - msg
+    
+    stdout dq 0
+    bytes_written dq 0
+
+section '.text' code readable executable
