@@ -74,3 +74,22 @@ _start:
     syscall
     
     ; Check for errors
+    cmp rax, 0
+    jl error
+    
+    ; Close file
+    mov rax, 3              ; sys_close
+    mov rdi, [fd]
+    syscall
+    
+    ; Print success message
+    mov rax, 1              ; sys_write
+    mov rdi, 1              ; stdout
+    lea rsi, [success_msg]
+    mov rdx, success_len
+    syscall
+    
+    ; Exit successfully
+    jmp exit
+    
+error:
