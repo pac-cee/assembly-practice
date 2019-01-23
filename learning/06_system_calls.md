@@ -169,3 +169,22 @@ print_greeting:
     
     ; Calculate name length
     mov rdi, rsi
+    call strlen
+    
+    mov rdx, rax              ; Length from strlen
+    mov rax, 1                 ; sys_write
+    mov rdi, 1                 ; stdout
+    lea rsi, [name]
+    syscall
+    
+    ; Print newline
+    mov rax, 1                 ; sys_write
+    mov rdi, 1                 ; stdout
+    lea rsi, [newline]
+    mov rdx, 1
+    syscall
+    
+    ; Exit
+    mov rax, 60                ; sys_exit
+    xor rdi, rdi               ; status = 0
+    syscall
