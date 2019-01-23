@@ -169,3 +169,22 @@ factorial:
 .done:
     leave
     ret
+
+main:
+    push rbp
+    mov rbp, rsp
+    
+    ; Compute factorial(5)
+    mov rdi, [n]        ; Load n
+    %ifidn __OUTPUT_FORMAT__, win64
+    mov rcx, rdi
+    %endif
+    call factorial
+    
+    ; Print the result
+    mov rdx, rax        ; Result
+    mov r8, [n]         ; n
+    lea rcx, [rel msg]  ; Format string
+    %ifidn __OUTPUT_FORMAT__, win64
+    call printf
+    %else
