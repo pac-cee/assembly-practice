@@ -188,3 +188,22 @@ print_greeting:
     mov rax, 60                ; sys_exit
     xor rdi, rdi               ; status = 0
     syscall
+
+; strlen function
+; Input: RDI = string address
+; Output: RAX = string length
+strlen:
+    xor rcx, rcx              ; Counter = 0
+    not rcx                    ; RCX = -1
+    xor al, al                ; AL = 0 (null terminator)
+    cld                       ; Clear direction flag (forward)
+    repne scasb               ; Scan string until null byte
+    not rcx                   ; Two's complement negation
+    lea rax, [rcx - 1]        ; Subtract 1 to get length
+    ret
+```
+
+## Windows API Example
+
+```assembly
+; File: win32_hello.asm
