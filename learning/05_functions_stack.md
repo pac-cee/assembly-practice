@@ -150,3 +150,22 @@ factorial:
     
     ; Base case: 0! = 1
     cmp rdi, 0
+    jne .recurse
+    mov rax, 1
+    jmp .done
+    
+.recurse:
+    ; Save n and the return address
+    push rdi
+    
+    ; Compute factorial(n-1)
+    dec rdi
+    call factorial
+    
+    ; Multiply by n: rax = n * factorial(n-1)
+    pop rdi
+    imul rax, rdi
+    
+.done:
+    leave
+    ret
