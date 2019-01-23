@@ -131,3 +131,22 @@ section .bss
     name resb 32          ; Buffer for name (31 chars + null)
     name_len equ 32
 
+section .text
+    global _start
+
+_start:
+    ; Print prompt
+    mov rax, 1              ; sys_write
+    mov rdi, 1              ; stdout
+    lea rsi, [prompt]
+    mov rdx, prompt_len
+    syscall
+    
+    ; Read name
+    mov rax, 0              ; sys_read
+    mov rdi, 0              ; stdin
+    lea rsi, [name]
+    mov rdx, name_len
+    syscall
+    
+    ; Remove newline from input
