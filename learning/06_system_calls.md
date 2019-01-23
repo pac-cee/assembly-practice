@@ -93,3 +93,22 @@ _start:
     jmp exit
     
 error:
+    ; Print error message
+    mov rax, 1              ; sys_write
+    mov rdi, 2              ; stderr
+    lea rsi, [error_msg]
+    mov rdx, error_len
+    syscall
+    
+    ; Exit with error
+    mov rax, 60             ; sys_exit
+    mov rdi, 1              ; status = 1
+    syscall
+
+exit:
+    ; Exit successfully
+    mov rax, 60             ; sys_exit
+    xor rdi, rdi            ; status = 0
+    syscall
+```
+
