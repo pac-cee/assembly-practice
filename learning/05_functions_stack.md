@@ -226,3 +226,22 @@ main:
    - Example:
      ```assembly
      ; Correct
+     sub rsp, 32     ; 32 is a multiple of 16
+     
+     ; Potentially incorrect
+     sub rsp, 20     ; Not a multiple of 16
+     ```
+
+2. **Register Preservation**
+   - Non-volatile registers must be preserved across function calls
+   - Example:
+     ```assembly
+     my_function:
+         push rbx        ; Save non-volatile register
+         
+         ; Function body
+         
+         pop rbx         ; Restore non-volatile register
+         ret
+     ```
+
