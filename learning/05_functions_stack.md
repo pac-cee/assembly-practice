@@ -283,3 +283,22 @@ my_function:
     push rdi
     push rbx
     ; Function body
+```
+
+**Windows x64 Epilogue:**
+```assembly
+    pop rbx
+    pop rdi
+    pop rsi
+    mov rsp, rbp
+    pop rbp
+    ret
+```
+
+**System V ABI Prologue:**
+```assembly
+my_function:
+    push rbp
+    mov rbp, rsp
+    push rbx           ; Save non-volatile regs if used
+    push r12
