@@ -150,3 +150,22 @@ _start:
     syscall
     
     ; Remove newline from input
+    lea rdi, [name + rax - 1]  ; Point to last character read
+    cmp byte [rdi], 10         ; Is it a newline?
+    jne print_greeting
+    mov byte [rdi], 0          ; Replace newline with null
+    
+print_greeting:
+    ; Print greeting
+    mov rax, 1                 ; sys_write
+    mov rdi, 1                 ; stdout
+    lea rsi, [greeting]
+    mov rdx, greeting_len
+    syscall
+    
+    ; Print name
+    mov rax, 1                 ; sys_write
+    lea rsi, [name]
+    
+    ; Calculate name length
+    mov rdi, rsi
