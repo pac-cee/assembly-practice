@@ -188,3 +188,22 @@ main:
     %ifidn __OUTPUT_FORMAT__, win64
     call printf
     %else
+    ; System V calling convention
+    mov rdi, rcx        ; Format string
+    mov rsi, r8         ; n
+    mov rdx, rax        ; Result
+    xor eax, eax        ; 0 floating point args
+    call printf wrt ..plt
+    %endif
+    
+    ; Return 0
+    xor eax, eax
+    leave
+    ret
+```
+
+## Exercises
+
+1. **Fibonacci Sequence**
+   - Implement a recursive function to compute the nth Fibonacci number
+   - Input: n in RDI (System V) or RCX (Windows)
