@@ -17,3 +17,22 @@ System calls (syscalls) are the interface between user programs and the operatin
 - Typically use Windows API instead of direct syscalls
 - Arguments in RCX, RDX, R8, R9, then stack
 - Use `syscall` instruction (Windows 10+)
+
+## Common Linux System Calls
+
+| Name | RAX | RDI | RSI | RDX | R10 | R8 | R9 |
+|------|-----|-----|-----|-----|-----|----|----|
+| read | 0 | fd | buf | count | - | - | - |
+| write | 1 | fd | buf | count | - | - | - |
+| open | 2 | filename | flags | mode | - | - | - |
+| close | 3 | fd | - | - | - | - | - |
+| exit | 60 | status | - | - | - | - | - |
+
+## File I/O Example (Linux)
+
+```assembly
+; File: file_io.asm
+; Demonstrates file I/O using system calls (Linux)
+
+section .data
+    ; File names and data
