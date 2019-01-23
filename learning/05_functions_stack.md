@@ -302,3 +302,14 @@ my_function:
     mov rbp, rsp
     push rbx           ; Save non-volatile regs if used
     push r12
+    ; Function body
+```
+
+**System V ABI Epilogue:**
+```assembly
+    pop r12
+    pop rbx
+    mov rsp, rbp
+    pop rbp
+    ret
+```
