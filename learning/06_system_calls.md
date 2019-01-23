@@ -55,3 +55,22 @@ section .text
 
 _start:
     ; Open file (create if not exists, write-only, truncate)
+    mov rax, 2              ; sys_open
+    lea rdi, [filename]      ; filename
+    mov rsi, 0x241           ; O_WRONLY|O_CREAT|O_TRUNC
+    mov rdx, 0o644          ; rw-r--r--
+    syscall
+    
+    ; Check for errors
+    cmp rax, 0
+    jl error
+    mov [fd], rax            ; Save file descriptor
+    
+    ; Write to file
+    mov rax, 1              ; sys_write
+    mov rdi, [fd]           ; file descriptor
+    lea rsi, [text]         ; buffer
+    mov rdx, text_len       ; count
+    syscall
+    
+    ; Check for errors
