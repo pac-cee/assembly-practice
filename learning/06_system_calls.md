@@ -245,3 +245,22 @@ start:
     lea r9, [bytes_written]     ; lpNumberOfCharsWritten
     mov qword [rsp + 32], 0     ; lpReserved (5th arg on stack)
     call [WriteFile]
+    
+    ; ExitProcess(0)
+    xor ecx, ecx
+    call [ExitProcess]
+
+section '.idata' import data readable writeable
+    library kernel32, 'KERNEL32.DLL',\
+            msvcrt, 'MSVCRT.DLL'
+    
+    import kernel32,\ 
+           GetStdHandle, 'GetStdHandle',\
+           WriteFile, 'WriteFile',\
+           ExitProcess, 'ExitProcess'
+    
+    import msvcrt,\ 
+           printf, 'printf',\
+           scanf, 'scanf'
+```
+
