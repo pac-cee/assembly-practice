@@ -302,3 +302,22 @@ section '.idata' import data readable writeable
      ; Safe read with length check
      mov rax, 0        ; sys_read
      mov rdi, 0        ; stdin
+     lea rsi, [buffer]
+     mov rdx, buffer_size
+     syscall
+     
+     ; Check if input is too long
+     cmp rax, buffer_size
+     jae input_too_long
+     ```
+
+3. **Resource Leaks**
+   - Always close files and free resources
+   - Example:
+     ```assembly
+     ; Open file
+     mov rax, 2        ; sys_open
+     ; ...
+     syscall
+     mov [fd], rax
+     
