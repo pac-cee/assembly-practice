@@ -264,3 +264,22 @@ section '.idata' import data readable writeable
            scanf, 'scanf'
 ```
 
+## Exercises
+
+1. **File Copy Utility**
+   - Write a program that copies the contents of one file to another
+   - Take source and destination filenames as command-line arguments
+   - Handle errors appropriately
+
+2. **Simple Shell**
+   - Create a basic shell that can execute simple commands
+   - Use `fork()` and `execve()` system calls
+   - Support basic commands like `cd`, `ls`, `pwd`
+
+3. **Process Information**
+   - Write a program that displays information about the current process
+   - Show process ID, parent process ID, and user ID
+   - Use `getpid()`, `getppid()`, and `getuid()` system calls
+
+## Common Pitfalls
+
