@@ -283,3 +283,22 @@ section '.idata' import data readable writeable
 
 ## Common Pitfalls
 
+1. **Forgetting to Check Return Values**
+   - Always check system call return values for errors
+   - Example:
+     ```assembly
+     mov rax, 2        ; sys_open
+     ; ...
+     syscall
+     cmp rax, 0         ; Check for error
+     jl error_handler   ; Handle error
+     ```
+
+2. **Buffer Overflows**
+   - Always validate input lengths
+   - Use bounded operations when reading input
+   - Example:
+     ```assembly
+     ; Safe read with length check
+     mov rax, 0        ; sys_read
+     mov rdi, 0        ; stdin
