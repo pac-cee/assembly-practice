@@ -321,3 +321,22 @@ section '.idata' import data readable writeable
      syscall
      mov [fd], rax
      
+     ; ... use file ...
+     
+     ; Close file when done
+     mov rax, 3        ; sys_close
+     mov rdi, [fd]
+     syscall
+     ```
+
+## Practice Problem
+
+Write a program that counts the number of lines in a text file:
+
+```assembly
+; Input: RDI = filename (null-terminated string)
+; Output: RAX = number of lines in file (or -1 on error)
+count_lines:
+    ; Your implementation here
+    ret
+```
