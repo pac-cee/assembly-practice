@@ -359,3 +359,24 @@ In the next lesson, we'll explore advanced topics like SIMD instructions, optimi
 | munmap | 11 | RDI=addr, RSI=length | Unmap memory |
 
 ### File Open Flags (OR these together)
+| Flag | Value | Description |
+|------|-------|-------------|
+| O_RDONLY | 0 | Read only |
+| O_WRONLY | 1 | Write only |
+| O_RDWR | 2 | Read/write |
+| O_CREAT | 0x40 | Create if not exists |
+| O_TRUNC | 0x200 | Truncate file |
+| O_APPEND | 0x400 | Append to file |
+
+### File Permissions (octal)
+| Permission | Value | Description |
+|-----------|-------|-------------|
+| S_IRUSR | 0400 | User read |
+| S_IWUSR | 0200 | User write |
+| S_IXUSR | 0100 | User execute |
+| S_IRGRP | 0040 | Group read |
+| S_IWGRP | 0020 | Group write |
+| S_IXGRP | 0010 | Group execute |
+| S_IROTH | 0004 | Others read |
+| S_IWOTH | 0002 | Others write |
+| S_IXOTH | 0001 | Others execute |
