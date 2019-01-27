@@ -340,3 +340,22 @@ count_lines:
     ; Your implementation here
     ret
 ```
+
+In the next lesson, we'll explore advanced topics like SIMD instructions, optimization techniques, and interfacing with C code.
+
+## Quick Reference
+
+### Common Linux System Calls
+| Syscall | RAX | Arguments | Description |
+|---------|-----|-----------|-------------|
+| read | 0 | RDI=fd, RSI=buf, RDX=count | Read from file |
+| write | 1 | RDI=fd, RSI=buf, RDX=count | Write to file |
+| open | 2 | RDI=filename, RSI=flags, RDX=mode | Open file |
+| close | 3 | RDI=fd | Close file |
+| exit | 60 | RDI=status | Terminate process |
+| fork | 57 | - | Create child process |
+| execve | 59 | RDI=filename, RSI=argv, RDX=envp | Execute program |
+| mmap | 9 | RDI=addr, RSI=length, RDX=prot, R10=flags, R8=fd, R9=offset | Map file/memory |
+| munmap | 11 | RDI=addr, RSI=length | Unmap memory |
+
+### File Open Flags (OR these together)
