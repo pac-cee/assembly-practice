@@ -169,3 +169,22 @@ popcnt rax, rbx ; Count number of set bits in RBX
 lock cmpxchg [mem], rbx  ; if (RAX == [mem]) { [mem] = RBX; ZF=1 } else { RAX = [mem]; ZF=0 }
 
 ; Atomic add
+lock xadd [mem], rax     ; temp = [mem]; [mem] += RAX; RAX = temp
+```
+
+### 3. String Operations
+```assembly
+; Compare strings
+cld                 ; Clear direction flag (forward)
+mov rdi, str1
+mov rsi, str2
+mov rcx, len
+repe cmpsb          ; Compare while equal
+
+; Find character in string
+mov rdi, str
+mov al, 'x'
+mov rcx, max_len
+repne scasb         ; Find AL in [RDI++]
+```
+
