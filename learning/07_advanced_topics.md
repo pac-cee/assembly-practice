@@ -17,3 +17,22 @@ divps xmm0, xmm1       ; Packed divide
 
 ; Data movement
 movaps xmm0, [mem]     ; Aligned move
+movups xmm0, [mem]     ; Unaligned move
+
+; Shuffling and blending
+shufps xmm0, xmm1, imm8  ; Shuffle packed singles
+blendvps xmm0, xmm1, xmm2 ; Blend packed singles
+
+; AVX instructions (VEX-encoded)
+vmulps ymm0, ymm1, ymm2  ; 256-bit packed multiply
+vfmadd132ps ymm0, ymm1, ymm2 ; Fused multiply-add
+```
+
+## Inline Assembly in C
+
+### Basic Syntax
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 20, result;
