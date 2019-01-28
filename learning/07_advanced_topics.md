@@ -36,3 +36,22 @@ vfmadd132ps ymm0, ymm1, ymm2 ; Fused multiply-add
 
 int main() {
     int a = 10, b = 20, result;
+    
+    __asm__ volatile (
+        "addl %%ebx, %%eax"  // Assembly template
+        : "=a" (result)       // Output operands
+        : "a" (a), "b" (b)    // Input operands
+        :                     // Clobbered registers
+    );
+    
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+### Extended Asm with Memory Operands
+```c
+void memcpy_asm(void *dest, const void *src, size_t n) {
+    __asm__ volatile (
+        "rep movsb"
+        : "+D" (dest), "+S" (src), "+c" (n)
