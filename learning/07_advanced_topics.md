@@ -131,3 +131,22 @@ data_section:
 
 text_section:
     global main
+
+main:
+    push rbp
+    mov rbp, rsp
+    
+    ; Call printf("The result is: %d\n", number)
+    mov rdi, fmt          ; Format string
+    mov rsi, [number]     ; First argument
+    xor eax, eax          ; 0 floating-point args
+    call printf
+    
+    ; Return 0
+    xor eax, eax
+    pop rbp
+    ret
+```
+
+## Advanced Instructions
+
