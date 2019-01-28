@@ -150,3 +150,22 @@ main:
 
 ## Advanced Instructions
 
+### 1. Bit Manipulation
+```assembly
+; Bit test and set
+bts rax, rbx    ; Set bit RBX in RAX and store old bit in CF
+
+; Bit scan forward/backward
+bsf rax, rbx    ; Find first set bit in RBX, store index in RAX
+bsr rax, rbx    ; Find last set bit in RBX, store index in RAX
+
+; Population count
+popcnt rax, rbx ; Count number of set bits in RBX
+```
+
+### 2. Atomic Operations
+```assembly
+; Atomic compare and exchange
+lock cmpxchg [mem], rbx  ; if (RAX == [mem]) { [mem] = RBX; ZF=1 } else { RAX = [mem]; ZF=0 }
+
+; Atomic add
