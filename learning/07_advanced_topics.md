@@ -112,3 +112,22 @@ add ebx, [mem4]  ; Independent operation
   - Floating-point: XMM0-XMM7
   - Return: RAX (and RDX for 128-bit)
 
+- **Windows x64**
+  - Integer args: RCX, RDX, R8, R9
+  - Floating-point: XMM0-XMM3
+  - Return: RAX (and XMM0 for floating-point)
+
+### Example: Calling C from Assembly
+
+```assembly
+; File: call_c.asm
+; Demonstrates calling C functions from assembly
+
+extern printf
+
+data_section:
+    fmt db "The result is: %d", 10, 0
+    number dq 42
+
+text_section:
+    global main
