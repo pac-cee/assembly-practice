@@ -55,3 +55,22 @@ void memcpy_asm(void *dest, const void *src, size_t n) {
     __asm__ volatile (
         "rep movsb"
         : "+D" (dest), "+S" (src), "+c" (n)
+        : 
+        : "memory"
+    );
+}
+```
+
+## Performance Optimization
+
+### 1. Loop Unrolling
+```assembly
+; Before unrolling
+mov rcx, 1000
+loop_start:
+    ; Loop body
+    dec rcx
+    jnz loop_start
+
+; After unrolling by 4
+mov rcx, 250  ; 1000 / 4
