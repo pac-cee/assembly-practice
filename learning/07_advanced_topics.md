@@ -188,3 +188,22 @@ mov rcx, max_len
 repne scasb         ; Find AL in [RDI++]
 ```
 
+## Debugging Assembly
+
+### Using GDB
+```bash
+gdb ./your_program
+(gdb) break *main     # Set breakpoint at main
+(gdb) run            # Start program
+(gdb) info registers # Show all registers
+(gdb) x/10i $rip     # Show next 10 instructions
+(gdb) stepi          # Step one instruction
+(gdb) nexti          # Step over function calls
+(gdb) display/x $rax # Always show RAX in hex
+```
+
+### Common GDB Commands
+- `layout asm` - Switch to assembly layout
+- `tui reg general` - Show registers
+- `x/10xg $rsp` - Examine stack (10 quadwords)
+- `watch *0x1234` - Watch memory location
