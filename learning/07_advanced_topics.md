@@ -74,3 +74,22 @@ loop_start:
 
 ; After unrolling by 4
 mov rcx, 250  ; 1000 / 4
+loop_start:
+    ; Loop body (x4)
+    ; ...
+    dec rcx
+    jnz loop_start
+```
+
+### 2. Data Alignment
+```assembly
+section .data
+    align 16         ; Align to 16-byte boundary
+    my_data dd 1.0, 2.0, 3.0, 4.0
+
+section .text
+    movaps xmm0, [my_data]  ; Requires 16-byte alignment
+```
+
+### 3. Avoiding Pipeline Stalls
+```assembly
