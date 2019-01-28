@@ -207,3 +207,22 @@ gdb ./your_program
 - `tui reg general` - Show registers
 - `x/10xg $rsp` - Examine stack (10 quadwords)
 - `watch *0x1234` - Watch memory location
+- `info frame` - Show current stack frame
+
+## Optimization Guidelines
+
+1. **Minimize Memory Access**
+   - Use registers whenever possible
+   - Cache-friendly data structures
+   - Sequential memory access patterns
+
+2. **Branch Prediction**
+   - Make the common case the fall-through
+   - Use `likely()`/`unlikely()` macros in C
+   - Minimize branches in tight loops
+
+3. **Instruction Selection**
+   - Use specialized instructions (e.g., `lea` for arithmetic)
+   - Prefer 32-bit operands (smaller encoding)
+   - Avoid partial register stalls
+
