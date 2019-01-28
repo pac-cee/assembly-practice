@@ -93,3 +93,22 @@ section .text
 
 ### 3. Avoiding Pipeline Stalls
 ```assembly
+; Bad - RAW (Read After Write) hazard
+mov eax, [mem1]
+add eax, [mem2]  ; Stall - waiting for previous mov to complete
+
+; Better - Interleave independent operations
+mov eax, [mem1]
+mov ebx, [mem3]  ; Independent operation
+add eax, [mem2]
+add ebx, [mem4]  ; Independent operation
+```
+
+## Interfacing with C
+
+### Calling Conventions
+- **Linux/macOS**: System V AMD64 ABI
+  - Integer args: RDI, RSI, RDX, RCX, R8, R9
+  - Floating-point: XMM0-XMM7
+  - Return: RAX (and RDX for 128-bit)
+
