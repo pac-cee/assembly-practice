@@ -226,3 +226,22 @@ gdb ./your_program
    - Prefer 32-bit operands (smaller encoding)
    - Avoid partial register stalls
 
+4. **Loop Optimization**
+   - Unroll small loops
+   - Move invariants out of loops
+   - Use count-down loops with `dec/jnz`
+
+## Final Project
+
+Implement a simple image processing function in assembly:
+1. Load a grayscale image (PGM format)
+2. Apply a 3x3 convolution filter (e.g., blur, sharpen)
+3. Save the result to a new file
+
+## Further Reading
+
+1. **Intel 64 and IA-32 Architectures Software Developer Manuals**
+2. **AMD64 Architecture Programmer's Manual**
+3. **Agner Fog's Optimization Manuals**
+4. **x86-64 Machine-Level Programming** by David A. Patterson and John L. Hennessy
+5. **Computer Systems: A Programmer's Perspective** by Randal E. Bryant and David R. O'Hallaron
