@@ -245,3 +245,22 @@ Implement a simple image processing function in assembly:
 3. **Agner Fog's Optimization Manuals**
 4. **x86-64 Machine-Level Programming** by David A. Patterson and John L. Hennessy
 5. **Computer Systems: A Programmer's Perspective** by Randal E. Bryant and David R. O'Hallaron
+
+## Complete Learning Path
+
+1. **Basic Concepts**
+   - Registers and memory
+   - Basic arithmetic and logic
+   - Control flow
+
+2. **Intermediate Topics**
+   - Functions and stack
+   - System calls and I/O
+   - Data structures
+
+3. **Advanced Topics**
+   - SIMD programming
+   - Performance optimization
+   - Interfacing with high-level languages
+
+4. **Specialized Areas**
