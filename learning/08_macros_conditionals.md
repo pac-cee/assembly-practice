@@ -112,3 +112,22 @@ Create a file `macros.inc`:
 
 ## String Manipulation Macros
 
+```assembly
+%macro str_len 2
+    ; Input: %1 = string address
+    ; Output: %2 = length in RAX
+    push rdi
+    push rcx
+    
+    mov rdi, %1
+    xor rcx, rcx
+    not rcx
+    xor al, al
+    cld
+    repne scasb
+    not rcx
+    dec rcx
+    mov %2, rcx
+    
+    pop rcx
+    pop rdi
