@@ -169,3 +169,22 @@ Create a file `macros.inc`:
 3. **String Library**
    - Create a set of string manipulation macros (copy, compare, concatenate)
    - Use these macros to implement a simple string formatter
+
+## Best Practices
+
+1. **Naming Conventions**
+   - Use uppercase for macro names to distinguish them from other symbols
+   - Add a prefix to avoid naming conflicts (e.g., `MYLIB_MACRO`)
+
+2. **Documentation**
+   - Always document macro parameters and their purposes
+   - Include examples of macro usage
+
+3. **Error Checking**
+   - Validate macro parameters
+   - Use `%error` for compile-time errors
+
+## Advanced Example: Loop Unrolling
+
+```assembly
+%macro unrolled_loop 3
