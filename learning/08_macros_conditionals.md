@@ -17,3 +17,22 @@ mymacro 10, 20      ; Expands to: mov eax, 10; add eax, 20
 ```
 
 ### Multi-line Macros
+
+```assembly
+%macro print_string 2
+    push rdi
+    push rsi
+    push rax
+    
+    mov rdi, %1    ; String address
+    mov rsi, %2    ; Length
+    mov rax, 0x2000004  ; sys_write
+    mov rdi, 1          ; stdout
+    syscall
+    
+    pop rax
+    pop rsi
+    pop rdi
+%endmacro
+```
+
