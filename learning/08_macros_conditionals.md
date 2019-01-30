@@ -74,3 +74,22 @@ mymacro 1, 2, 3   ; Uses 1, 2, 3
     %macro write_log 1
         ; Implementation for debug logging
     %endmacro
+%else
+    %define LOG(msg) ; No-op in release
+%endif
+```
+
+### %if with Expressions
+
+```assembly
+%if ($ - $$) > 100h
+    %error "Code section too large!"
+%endif
+```
+
+## Macro Libraries
+
+Create a file `macros.inc`:
+
+```assembly
+; macros.inc
