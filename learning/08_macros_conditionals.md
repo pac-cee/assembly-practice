@@ -55,3 +55,22 @@ mymacro 1, 2, 3   ; Uses 1, 2, 3
 
 ```assembly
 %macro varmacro 1-*  ; 1+ parameters
+    %rep %0          ; Number of parameters
+        push %1       ; Push each parameter
+        %rotate 1     ; Move to next parameter
+    %endrep
+%endmacro
+```
+
+## Conditional Assembly
+
+### %ifdef, %ifndef, %else, %endif
+
+```assembly
+%define DEBUG 1
+
+%ifdef DEBUG
+    %define LOG(msg) write_log msg
+    %macro write_log 1
+        ; Implementation for debug logging
+    %endmacro
