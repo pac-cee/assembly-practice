@@ -131,3 +131,22 @@ Create a file `macros.inc`:
     
     pop rcx
     pop rdi
+%endmacro
+```
+
+## Debugging Macros
+
+```assembly
+%macro debug_print 1
+    %ifdef DEBUG
+        push rdi
+        push rsi
+        push rdx
+        push rax
+        
+        mov rdi, %1
+        call print_string
+        
+        pop rax
+        pop rdx
+        pop rsi
