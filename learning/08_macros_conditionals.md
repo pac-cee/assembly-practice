@@ -93,3 +93,22 @@ Create a file `macros.inc`:
 
 ```assembly
 ; macros.inc
+%ifndef MACROS_INC
+%define MACROS_INC
+
+%macro prologue 0
+    push rbp
+    mov rbp, rsp
+%endmacro
+
+%macro epilogue 0
+    mov rsp, rbp
+    pop rbp
+    ret
+%endmacro
+
+%endif ; MACROS_INC
+```
+
+## String Manipulation Macros
+
