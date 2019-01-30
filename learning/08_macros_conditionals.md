@@ -150,3 +150,22 @@ Create a file `macros.inc`:
         pop rax
         pop rdx
         pop rsi
+        pop rdi
+    %endif
+%endmacro
+```
+
+## Exercises
+
+1. **Macro Practice**
+   - Create a macro that pushes all general-purpose registers
+   - Create a matching macro to pop them back
+   - Use these in a function prologue/epilogue
+
+2. **Conditional Assembly**
+   - Create a build configuration that includes debug code only in debug builds
+   - Implement different versions of a function based on a compile-time constant
+
+3. **String Library**
+   - Create a set of string manipulation macros (copy, compare, concatenate)
+   - Use these macros to implement a simple string formatter
