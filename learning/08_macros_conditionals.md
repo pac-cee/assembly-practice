@@ -36,3 +36,22 @@ mymacro 10, 20      ; Expands to: mov eax, 10; add eax, 20
 %endmacro
 ```
 
+## Advanced Macro Features
+
+### Default Parameters
+
+```assembly
+%macro mymacro 1-3 10, 20  ; 1 required, 2 optional parameters
+    mov eax, %1
+    add eax, %2
+    add eax, %3
+%endmacro
+
+mymacro 5        ; Uses 5, 10, 20
+mymacro 1, 2, 3   ; Uses 1, 2, 3
+```
+
+### Variable Number of Parameters
+
+```assembly
+%macro varmacro 1-*  ; 1+ parameters
