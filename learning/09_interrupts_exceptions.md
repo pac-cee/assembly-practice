@@ -17,3 +17,22 @@ Interrupts are signals sent to the processor to indicate an event that needs imm
 ### IDT Entry Structure
 ```
 struct idt_entry {
+    uint16_t offset_low;    // Lower 16 bits of ISR address
+    uint16_t selector;       // Code segment selector
+    uint8_t ist;            // Interrupt Stack Table offset
+    uint8_t type_attr;      // Type and attributes
+    uint16_t offset_mid;    // Middle 16 bits of ISR address
+    uint32_t offset_high;   // Upper 32 bits of ISR address
+    uint32_t zero;          // Reserved (0)
+} __attribute__((packed));
+```
+
+## Setting Up the IDT
+
+### Define ISR Stubs
+```assembly
+%macro isr_noerr 1
+isr%1:
+    push 0                 ; Dummy error code
+    push %1                ; Interrupt number
+    jmp isr_common
