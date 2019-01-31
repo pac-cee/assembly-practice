@@ -188,3 +188,24 @@ Create a file `macros.inc`:
 
 ```assembly
 %macro unrolled_loop 3
+    ; %1 = counter register
+    ; %2 = number of unrolls
+    ; %3 = code block (use %$ for local labels)
+    
+    mov rcx, %1
+    shr rcx, %2
+    jz %%skip_loop
+    
+%%loop_start:
+    %rep (1 << %2)
+        %3
+    %endrep
+    
+    dec rcx
+    jnz %%loop_start
+    
+%%skip_loop:
+%endmacro
+```
+
+In the next lesson, we'll dive into interrupts and exception handling in x86-64 assembly.
