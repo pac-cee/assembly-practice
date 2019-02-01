@@ -36,3 +36,22 @@ isr%1:
     push 0                 ; Dummy error code
     push %1                ; Interrupt number
     jmp isr_common
+%endmacro
+
+%macro isr_err 1
+isr%1:
+    ; Error code pushed by CPU
+    push %1                ; Interrupt number
+    jmp isr_common
+%endmacro
+
+; Create ISR stubs
+%assign i 0
+%rep 256
+    %if i == 8 || (i >= 10 && i <= 14) || i == 17 || i == 30
+        isr_err i
+    %else
+        isr_noerr i
+    %endif
+    %assign i i+1
+%endrep
