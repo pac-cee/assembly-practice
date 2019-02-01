@@ -112,3 +112,22 @@ isr_common:
 extern page_fault_handler
 
 isr14:  ; Page Fault
+    cli
+    push rax
+    
+    ; Get CR2 (faulting address)
+    mov rax, cr2
+    push rax
+    
+    ; Call C handler with error code and fault address
+    mov rdi, [rsp + 8]  ; Error code
+    mov rsi, rax        ; Fault address
+    call page_fault_handler
+    
+    ; Clean up and return
+    pop rax
+    pop rax
+    sti
+    iretq
+```
+
