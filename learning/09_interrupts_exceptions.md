@@ -93,3 +93,22 @@ isr_common:
     pop r9
     pop r8
     pop rdi
+    pop rsi
+    pop rbp
+    pop rbx
+    pop rdx
+    pop rcx
+    pop rax
+    
+    ; Clean up error code and interrupt number
+    add rsp, 16
+    iretq
+```
+
+## Handling Specific Exceptions
+
+### Page Fault Handler
+```assembly
+extern page_fault_handler
+
+isr14:  ; Page Fault
