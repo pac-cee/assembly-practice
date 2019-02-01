@@ -55,3 +55,22 @@ isr%1:
     %endif
     %assign i i+1
 %endrep
+```
+
+### Common ISR Handler
+```assembly
+extern isr_handler  ; Defined in C
+
+isr_common:
+    ; Save all registers
+    push rax
+    push rcx
+    push rdx
+    push rbx
+    push rbp
+    push rsi
+    push rdi
+    push r8
+    push r9
+    push r10
+    push r11
