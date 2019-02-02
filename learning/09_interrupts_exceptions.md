@@ -207,3 +207,22 @@ nested_isr:
 ## System Call Implementation
 
 ### Setting Up SYSCALL/SYSRET
+```assembly
+init_syscalls:
+    ; Set STAR MSR (bits 47:32 = SYSRET CS, bits 31:16 = SYSCALL CS)
+    mov ecx, 0xC0000081  ; STAR MSR
+    rdmsr
+    mov edx, 0x00180008  ; SYSRET CS = 0x18, SYSCALL CS = 0x08
+    wrmsr
+    
+    ; Set LSTAR MSR to syscall entry point
+    mov ecx, 0xC0000082  ; LSTAR MSR
+    mov rdx, syscall_entry
+    mov rax, rdx
+    shr rdx, 32
+    wrmsr
+    
+    ; Set FMASK MSR to clear interrupts and direction flag
+    mov ecx, 0xC0000084  ; FMASK MSR
+    mov eax, 0x00000300  ; Clear IF and DF
+    xor edx, edx
