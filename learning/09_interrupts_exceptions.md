@@ -169,3 +169,22 @@ init_pic:
     
     pop rax
     ret
+```
+
+## Advanced Interrupt Handling
+
+### Interrupt Stack Frame
+When an interrupt occurs, the CPU pushes:
+1. SS:RSP (if privilege change)
+2. RFLAGS
+3. CS:RIP
+4. Error code (for some exceptions)
+
+### Nested Interrupts
+```assembly
+enable_interrupts:
+    sti
+    ret
+
+disable_interrupts:
+    cli
