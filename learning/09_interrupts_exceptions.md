@@ -131,3 +131,22 @@ isr14:  ; Page Fault
     iretq
 ```
 
+## Programmable Interrupt Controller (PIC)
+
+### Remapping the PIC
+```assembly
+; Initialize PIC
+init_pic:
+    ; Save registers
+    push rax
+    
+    ; ICW1: Start initialization
+    mov al, 0x11        ; ICW1 + ICW4 needed
+    out 0x20, al        ; Send to master PIC
+    out 0xA0, al        ; Send to slave PIC
+    
+    ; ICW2: Remap IRQ base
+    mov al, 0x20        ; Master PIC vector offset = 0x20
+    out 0x21, al
+    mov al, 0x28        ; Slave PIC vector offset = 0x28
+    out 0xA1, al
