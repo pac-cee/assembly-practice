@@ -188,3 +188,22 @@ enable_interrupts:
 
 disable_interrupts:
     cli
+    ret
+
+nested_isr:
+    pushfq
+    cli
+    
+    ; Save registers
+    
+    ; Handle interrupt
+    
+    ; Restore registers
+    
+    popfq
+    iretq
+```
+
+## System Call Implementation
+
+### Setting Up SYSCALL/SYSRET
