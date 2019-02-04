@@ -264,3 +264,22 @@ syscall_entry:
     pop r11              ; RFLAGS
     add rsp, 8           ; Skip RSP
     add rsp, 8           ; Skip SS
+    
+    ; Return to user mode
+    swapgs
+    o64 sysretq
+```
+
+## Exercises
+
+1. **Basic Interrupt Handler**
+   - Set up a simple IDT with handlers for common exceptions
+   - Print an error message when a page fault occurs
+
+2. **Keyboard Interrupt**
+   - Write a handler for IRQ1 (keyboard)
+   - Read scan codes from the keyboard controller
+   - Convert scan codes to ASCII and display them
+
+3. **System Call Interface**
+   - Implement a simple system call interface using SYSCALL/SYSRET
