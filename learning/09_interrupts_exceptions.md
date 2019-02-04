@@ -283,3 +283,23 @@ syscall_entry:
 
 3. **System Call Interface**
    - Implement a simple system call interface using SYSCALL/SYSRET
+   - Add system calls for basic I/O operations
+
+## Best Practices
+
+1. **Interrupt Safety**
+   - Keep interrupt handlers short and fast
+   - Disable interrupts only when necessary
+   - Use lock-free data structures when possible
+
+2. **Error Handling**
+   - Always validate input in system calls
+   - Provide meaningful error codes
+   - Log errors for debugging
+
+3. **Performance**
+   - Batch operations when possible
+   - Use interrupt coalescing for high-performance I/O
+   - Consider using polling for low-latency requirements
+
+In the next lesson, we'll explore mixed-language programming with C and assembly.
