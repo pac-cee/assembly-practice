@@ -17,3 +17,22 @@
 ## Calling C from Assembly
 
 ### Example: Calling printf
+
+```assembly
+; File: call_printf.asm
+extern printf
+
+data_section:
+    format db "The result is: %d", 10, 0
+    number dq 42
+
+text_section:
+    global main
+
+main:
+    push rbp
+    mov rbp, rsp
+    
+    ; Call printf("The result is: %d\n", number)
+    lea rdi, [format]    ; Format string
+    mov rsi, [number]     ; First argument
