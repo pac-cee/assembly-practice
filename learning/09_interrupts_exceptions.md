@@ -226,3 +226,22 @@ init_syscalls:
     mov ecx, 0xC0000084  ; FMASK MSR
     mov eax, 0x00000300  ; Clear IF and DF
     xor edx, edx
+    wrmsr
+    
+    ; Enable SYSCALL/SYSRET
+    mov ecx, 0xC0000080  ; EFER MSR
+    rdmsr
+    or eax, 1            ; Set SCE bit
+    wrmsr
+    
+    ret
+
+syscall_entry:
+    swapgs
+    mov [gs:0x8], rsp    ; Save user stack
+    mov rsp, [gs:0x0]    ; Load kernel stack
+    
+    ; Save registers
+    push qword 0x1B      ; SS
+    push qword [gs:0x8]   ; RSP
+    push r11             ; RFLAGS
