@@ -245,3 +245,22 @@ syscall_entry:
     push qword 0x1B      ; SS
     push qword [gs:0x8]   ; RSP
     push r11             ; RFLAGS
+    push qword 0x23      ; CS
+    push rcx             ; RIP
+    
+    ; Call syscall handler
+    mov rdi, rax         ; syscall number
+    mov rsi, [rsp + 8*7] ; arg1
+    mov rdx, [rsp + 8*8] ; arg2
+    mov r10, [rsp + 8*9] ; arg3
+    mov r8, [rsp + 8*10] ; arg4
+    mov r9, [rsp + 8*11] ; arg5
+    
+    call syscall_handler
+    
+    ; Restore registers
+    pop rcx
+    add rsp, 8           ; Skip CS
+    pop r11              ; RFLAGS
+    add rsp, 8           ; Skip RSP
+    add rsp, 8           ; Skip SS
