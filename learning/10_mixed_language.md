@@ -55,3 +55,22 @@ section .text
     global factorial
 
 ; int64_t add_numbers(int64_t a, int64_t b)
+add_numbers:
+    mov rax, rdi    ; First argument (a)
+    add rax, rsi    ; Second argument (b)
+    ret
+
+; int64_t factorial(int64_t n)
+factorial:
+    cmp rdi, 1
+    jle .base_case
+    
+    push rdi
+    dec rdi
+    call factorial
+    pop rdi
+    imul rax, rdi
+    ret
+    
+.base_case:
+    mov rax, 1
