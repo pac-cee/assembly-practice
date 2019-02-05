@@ -74,3 +74,22 @@ factorial:
     
 .base_case:
     mov rax, 1
+    ret
+```
+
+### C Program
+```c
+// File: main.c
+#include <stdio.h>
+#include <stdint.h>
+
+// Declare assembly functions
+int64_t add_numbers(int64_t a, int64_t b);
+int64_t factorial(int64_t n);
+
+int main() {
+    int64_t sum = add_numbers(10, 20);
+    printf("10 + 20 = %lld\n", sum);
+    
+    int64_t fact = factorial(5);
+    printf("5! = %lld\n", fact);
