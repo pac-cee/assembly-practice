@@ -36,3 +36,22 @@ main:
     ; Call printf("The result is: %d\n", number)
     lea rdi, [format]    ; Format string
     mov rsi, [number]     ; First argument
+    xor eax, eax          ; 0 floating-point args
+    call printf
+    
+    ; Return 0
+    xor eax, eax
+    pop rbp
+    ret
+```
+
+## Calling Assembly from C
+
+### Assembly Function
+```assembly
+; File: math.asm
+section .text
+    global add_numbers
+    global factorial
+
+; int64_t add_numbers(int64_t a, int64_t b)
