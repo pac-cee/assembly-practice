@@ -131,3 +131,22 @@ void memcpy_asm(void *dest, const void *src, size_t n) {
 }
 ```
 
+## Handling Global Variables
+
+### Accessing C Globals from Assembly
+```assembly
+; File: access_globals.asm
+extern global_variable  ; Declare external global
+
+section .text
+global get_global, set_global
+
+get_global:
+    mov rax, [rel global_variable wrt ..gotpc]
+    mov rax, [rax]
+    ret
+
+set_global:
+    mov rax, [rel global_variable wrt ..gotpc]
+    mov [rax], rdi
+    ret
