@@ -93,3 +93,22 @@ int main() {
     
     int64_t fact = factorial(5);
     printf("5! = %lld\n", fact);
+    
+    return 0;
+}
+```
+
+## Inline Assembly in C
+
+### Basic Inline Assembly
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 20, result;
+    
+    __asm__ volatile (
+        "addl %%ebx, %%eax"   // Assembly template
+        : "=a" (result)        // Output operands
+        : "a" (a), "b" (b)     // Input operands
+        :                      // Clobbered registers
