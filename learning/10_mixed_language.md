@@ -150,3 +150,22 @@ set_global:
     mov rax, [rel global_variable wrt ..gotpc]
     mov [rax], rdi
     ret
+```
+
+## Structs and Memory Layout
+
+### Passing Structs
+```c
+// C code
+struct Point {
+    int x;
+    int y;
+};
+
+extern void print_point(struct Point p);
+
+// Assembly implementation
+section .text
+global print_point
+print_point:
+    ; rdi = x, rsi = y
