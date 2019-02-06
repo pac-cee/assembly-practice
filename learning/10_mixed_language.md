@@ -112,3 +112,22 @@ int main() {
         : "=a" (result)        // Output operands
         : "a" (a), "b" (b)     // Input operands
         :                      // Clobbered registers
+    );
+    
+    printf("Result: %d\n", result);
+    return 0;
+}
+```
+
+### Extended Asm with Memory Operands
+```c
+void memcpy_asm(void *dest, const void *src, size_t n) {
+    __asm__ volatile (
+        "rep movsb"
+        : "+D" (dest), "+S" (src), "+c" (n)
+        : 
+        : "memory"
+    );
+}
+```
+
