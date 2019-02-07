@@ -207,3 +207,22 @@ call [rax + 8]        ; Call second virtual function
 
 ## Performance Considerations
 
+### Register Preservation
+- Callee-saved: RBX, RBP, R12-R15
+- Caller-saved: RAX, RCX, RDX, RSI, RDI, R8-R11, XMM0-XMM15
+
+### Stack Alignment
+- Ensure 16-byte stack alignment before function calls
+- Allocate stack space in 16-byte increments
+
+## Advanced: SIMD Intrinsics
+
+### Using SSE/AVX Intrinsics
+```c
+#include <immintrin.h>
+
+void add_arrays(float *a, float *b, float *c, size_t n) {
+    for (size_t i = 0; i < n; i += 4) {
+        __m128 va = _mm_load_ps(&a[i]);
+        __m128 vb = _mm_load_ps(&b[i]);
+        __m128 vc = _mm_add_ps(va, vb);
