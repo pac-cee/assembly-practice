@@ -245,3 +245,21 @@ void add_arrays(float *a, float *b, float *c, size_t n) {
    - Implement matrix multiplication in assembly
    - Compare performance with a C implementation
 
+## Best Practices
+
+1. **ABI Compliance**
+   - Follow the calling convention for your platform
+   - Handle stack alignment correctly
+   - Preserve non-volatile registers
+
+2. **Error Handling**
+   - Validate pointers before dereferencing
+   - Use consistent error codes
+   - Document error conditions
+
+3. **Performance**
+   - Minimize register spills
+   - Use SIMD instructions when appropriate
+   - Consider cache locality
+
+In the next lesson, we'll dive into advanced optimization techniques for x86-64 assembly.
