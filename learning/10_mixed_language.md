@@ -226,3 +226,22 @@ void add_arrays(float *a, float *b, float *c, size_t n) {
         __m128 va = _mm_load_ps(&a[i]);
         __m128 vb = _mm_load_ps(&b[i]);
         __m128 vc = _mm_add_ps(va, vb);
+        _mm_store_ps(&c[i], vc);
+    }
+}
+```
+
+## Exercises
+
+1. **Mixed-Language Calculator**
+   - Implement basic arithmetic operations in assembly
+   - Call them from a C program with a menu interface
+
+2. **String Library**
+   - Create optimized string functions in assembly (strlen, strcpy, etc.)
+   - Provide a C header for easy integration
+
+3. **Matrix Multiplication**
+   - Implement matrix multiplication in assembly
+   - Compare performance with a C implementation
+
