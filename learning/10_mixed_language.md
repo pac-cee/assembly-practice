@@ -169,3 +169,22 @@ section .text
 global print_point
 print_point:
     ; rdi = x, rsi = y
+    ; On System V: rdi = x, rsi = y
+    ; On Windows: rcx = x, rdx = y
+    
+    ; Print the point
+    mov rdx, rsi
+    mov rsi, rdi
+    lea rdi, [rel format]
+    xor eax, eax
+    call printf
+    ret
+
+section .rodata
+format db "Point: (%d, %d)", 10, 0
+```
+
+## Calling C++ from Assembly
+
+### Name Mangling
+C++ uses name mangling for function overloading. Use `extern "C"` to prevent mangling:
