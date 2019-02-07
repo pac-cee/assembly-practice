@@ -188,3 +188,22 @@ format db "Point: (%d, %d)", 10, 0
 
 ### Name Mangling
 C++ uses name mangling for function overloading. Use `extern "C"` to prevent mangling:
+
+```cpp
+// C++ code
+extern "C" {
+    void my_function(int x);
+}
+```
+
+### Virtual Functions
+Accessing virtual functions requires understanding the vtable layout:
+
+```assembly
+; Assuming rdi points to a C++ object
+mov rax, [rdi]        ; Get vtable pointer
+call [rax + 8]        ; Call second virtual function
+```
+
+## Performance Considerations
+
