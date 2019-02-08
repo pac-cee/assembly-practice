@@ -17,3 +17,22 @@
 
 ## Microarchitecture-Specific Optimization
 
+### Identifying CPU Features
+```assembly
+; Check for CPU features using CPUID
+check_avx2:
+    mov eax, 7
+    xor ecx, ecx
+    cpuid
+    test ebx, (1 << 5)  ; AVX2
+    jz no_avx2
+    ; AVX2 available
+    
+; Check for AVX-512
+check_avx512:
+    mov eax, 7
+    xor ecx, ecx
+    cpuid
+    test ebx, (1 << 16)  ; AVX-512F
+    jz no_avx512
+    ; AVX-512 available
