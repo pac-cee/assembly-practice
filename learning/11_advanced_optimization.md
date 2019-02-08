@@ -36,3 +36,22 @@ check_avx512:
     test ebx, (1 << 16)  ; AVX-512F
     jz no_avx512
     ; AVX-512 available
+```
+
+## Data Alignment
+
+### Cache Line Alignment
+```assembly
+section .data
+    align 64      ; Align to cache line (64 bytes)
+    my_data: 
+        times 64 db 0
+
+section .bss
+    align 64
+    buffer: resb 4096
+```
+
+### Structure Packing
+```c
+// Before optimization
