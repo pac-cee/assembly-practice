@@ -112,3 +112,22 @@ vector_add:
 .loop:
     vmovapd ymm1, [rdi]      ; Load a[0:3]
     vaddpd ymm1, ymm1, [rsi]  ; Add b[0:3]
+    vmovapd [rdx], ymm1       ; Store to c[0:3]
+    
+    add rdi, 32
+    add rsi, 32
+    add rdx, 32
+    sub rcx, 4
+    jnz .loop
+    
+    vzeroupper
+.done:
+    ret
+```
+
+## Memory Optimization
+
+### Prefetching
+```assembly
+; Prefetch data for next iteration
+prefetchnta [rdi + 4096]  ; Non-temporal prefetch
