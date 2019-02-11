@@ -74,3 +74,22 @@ struct optimized {
 ### Branch Prediction Hints
 ```assembly
 ; Unlikely branch (hint to CPU)
+cmp rax, rbx
+jne .unlikely_branch  ; 2C (not taken) 1D (taken)
+
+; Likely path
+
+.unlikely_branch:
+; Less frequent code
+```
+
+### Branchless Programming
+```c
+// Branch version
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+// Branchless version
+int max_branchless(int a, int b) {
+    int diff = a - b;
