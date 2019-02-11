@@ -150,3 +150,22 @@ sfence               ; Ensure visibility
 ; Before unrolling
 mov rcx, 1000
 .loop:
+    ; Loop body
+    dec rcx
+    jnz .loop
+
+; After unrolling (factor of 4)
+mov rcx, 250  ; 1000/4
+.unrolled_loop:
+    ; Loop body
+    ; Loop body
+    ; Loop body
+    ; Loop body
+    dec rcx
+    jnz .unrolled_loop
+```
+
+### Loop Blocking (Tiling)
+```c
+// Before blocking
+for (int i = 0; i < N; i++) {
