@@ -55,3 +55,22 @@ section .bss
 ### Structure Packing
 ```c
 // Before optimization
+struct unoptimized {
+    char a;     // 1 byte + 7 padding
+    double b;   // 8 bytes
+    int c;      // 4 bytes + 4 padding
+};              // Total: 24 bytes
+
+// After optimization
+struct optimized {
+    double b;   // 8 bytes
+    int c;      // 4 bytes
+    char a;     // 1 byte + 3 padding
+};              // Total: 16 bytes
+```
+
+## Branch Optimization
+
+### Branch Prediction Hints
+```assembly
+; Unlikely branch (hint to CPU)
