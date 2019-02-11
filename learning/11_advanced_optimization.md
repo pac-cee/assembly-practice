@@ -131,3 +131,22 @@ vector_add:
 ```assembly
 ; Prefetch data for next iteration
 prefetchnta [rdi + 4096]  ; Non-temporal prefetch
+prefetcht0 [rdi + 2048]   ; All cache levels
+prefetcht1 [rdi + 3072]   ; Higher cache levels
+prefetcht2 [rdi + 1024]   ; L2 and up
+```
+
+### Non-Temporal Stores
+```assembly
+; Use non-temporal stores for streaming data
+movntps [rdi], xmm0  ; Bypass cache
+sfence               ; Ensure visibility
+```
+
+## Loop Optimization
+
+### Loop Unrolling
+```assembly
+; Before unrolling
+mov rcx, 1000
+.loop:
