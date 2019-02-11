@@ -169,3 +169,22 @@ mov rcx, 250  ; 1000/4
 ```c
 // Before blocking
 for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N; j++) {
+        C[i][j] = 0;
+        for (int k = 0; k < N; k++) {
+            C[i][j] += A[i][k] * B[k][j];
+        }
+    }
+}
+
+// After blocking (block size B)
+for (int ii = 0; ii < N; ii += B) {
+    for (int jj = 0; jj < N; jj += B) {
+        for (int kk = 0; kk < N; kk += B) {
+            for (int i = ii; i < ii + B; i++) {
+                for (int j = jj; j < jj + B; j++) {
+                    for (int k = kk; k < kk + B; k++) {
+                        C[i][j] += A[i][k] * B[k][j];
+                    }
+                }
+            }
