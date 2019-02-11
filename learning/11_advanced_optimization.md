@@ -93,3 +93,22 @@ int max(int a, int b) {
 // Branchless version
 int max_branchless(int a, int b) {
     int diff = a - b;
+    int mask = diff >> 31;
+    return a + (diff & mask);
+}
+```
+
+## SIMD Optimization
+
+### AVX2 Example: Vector Addition
+```assembly
+; void vector_add(double *a, double *b, double *c, size_t n)
+vector_add:
+    test rcx, rcx
+    jz .done
+    
+    vxorpd ymm0, ymm0, ymm0
+    
+.loop:
+    vmovapd ymm1, [rdi]      ; Load a[0:3]
+    vaddpd ymm1, ymm1, [rsi]  ; Add b[0:3]
