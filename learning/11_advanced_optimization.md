@@ -226,3 +226,22 @@ mov [rdi], al
 haddps xmm0, xmm0    ; [a+b, c+d, a+b, c+d]
 haddps xmm0, xmm0    ; [a+b+c+d, a+b+c+d, ...]
 
+; AVX version
+vhaddps ymm0, ymm0, ymm0
+vhaddps ymm0, ymm0, ymm0
+vextractf128 xmm1, ymm0, 1
+addps xmm0, xmm1
+```
+
+### Fused Multiply-Add (FMA)
+```assembly
+; c = a * b + c
+; AVX2 version
+vmulpd ymm0, ymm1, ymm2
+vaddpd ymm0, ymm0, ymm3
+
+; FMA version (single instruction)
+vfmadd213pd ymm0, ymm1, ymm2  ; ymm0 = ymm1 * ymm0 + ymm2
+```
+
+## Memory Access Patterns
