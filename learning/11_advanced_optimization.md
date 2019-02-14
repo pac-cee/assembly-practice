@@ -264,3 +264,22 @@ struct Points {
 ### Non-Temporal Hints
 ```assembly
 ; Use non-temporal stores for streaming writes
+movntps [rdi], xmm0
+movntps [rdi+16], xmm1
+sfence  ; Ensure all non-temporal stores are visible
+```
+
+## Performance Measurement
+
+### Using RDTSC
+```assembly
+; Get CPU timestamp counter
+rdtsc
+shl rdx, 32
+or rax, rdx
+mov [start_time], rax
+
+; Code to measure
+
+rdtsc
+shl rdx, 32
