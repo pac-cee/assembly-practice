@@ -283,3 +283,22 @@ mov [start_time], rax
 
 rdtsc
 shl rdx, 32
+or rax, rdx
+sub rax, [start_time]
+; rax now contains cycle count
+```
+
+### Performance Counters
+- Use `perf` on Linux or VTune on Windows
+- Measure:
+  - Cache misses
+  - Branch mispredictions
+  - Instructions per cycle (IPC)
+
+## Exercises
+
+1. **Matrix Multiplication**
+   - Implement different versions (naive, blocked, SIMD)
+   - Compare performance
+
+2. **String Search**
