@@ -188,3 +188,22 @@ for (int ii = 0; ii < N; ii += B) {
                     }
                 }
             }
+        }
+    }
+}
+```
+
+## Instruction Selection
+
+### Using LEA for Arithmetic
+```assembly
+; Less efficient
+mov rax, rdx
+shl rax, 2
+add rax, rdx
+add rax, 10
+
+; More efficient
+lea rax, [rdx + rdx*4 + 10]
+```
+
