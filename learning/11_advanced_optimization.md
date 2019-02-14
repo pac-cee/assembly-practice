@@ -245,3 +245,22 @@ vfmadd213pd ymm0, ymm1, ymm2  ; ymm0 = ymm1 * ymm0 + ymm2
 ```
 
 ## Memory Access Patterns
+
+### Structure of Arrays (SoA) vs Array of Structures (AoS)
+```c
+// Array of Structures (AoS)
+struct Point {
+    float x, y, z;
+} points[1000];
+
+// Structure of Arrays (SoA)
+struct Points {
+    float x[1000];
+    float y[1000];
+    float z[1000];
+} points;
+```
+
+### Non-Temporal Hints
+```assembly
+; Use non-temporal stores for streaming writes
