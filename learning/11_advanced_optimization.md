@@ -302,3 +302,22 @@ sub rax, [start_time]
    - Compare performance
 
 2. **String Search**
+   - Optimize strstr() using SIMD
+   - Compare with standard library
+
+3. **Histogram**
+   - Create a histogram of byte values
+   - Optimize with SIMD and prefetching
+
+## Best Practices
+
+1. **Profile First**
+   - Use profiling tools to find bottlenecks
+   - Optimize the critical path
+
+2. **Algorithm First**
+   - Choose the right algorithm before micro-optimizing
+   - Consider time/space complexity
+
+3. **Readability**
+   - Document optimizations
