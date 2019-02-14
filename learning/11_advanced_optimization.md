@@ -207,3 +207,22 @@ add rax, 10
 lea rax, [rdx + rdx*4 + 10]
 ```
 
+### Avoiding Partial Register Stalls
+```assembly
+; Causes partial register stall
+mov al, [rsi]
+mov [rdi], al
+
+; Better - use full register
+movzx eax, byte [rsi]
+mov [rdi], al
+```
+
+## Advanced SIMD Techniques
+
+### Horizontal Operations
+```assembly
+; Horizontal sum of 4 floats in xmm0
+haddps xmm0, xmm0    ; [a+b, c+d, a+b, c+d]
+haddps xmm0, xmm0    ; [a+b+c+d, a+b+c+d, ...]
+
