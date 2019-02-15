@@ -17,3 +17,22 @@ vmovups ymm1, [rsi]     ; Unaligned packed single
 ; Arithmetic operations
 vaddps ymm2, ymm0, ymm1  ; Packed single add
 vmulps ymm3, ymm0, ymm1  ; Packed single multiply
+vsqrtps ymm4, ymm0       ; Packed square root
+
+; Horizontal operations
+vhaddps ymm5, ymm0, ymm1  ; Horizontal add
+
+; Fused multiply-add
+vfmadd132ps ymm0, ymm1, ymm2  ; ymm0 = ymm0 * ymm2 + ymm1
+```
+
+### AVX2 Enhancements
+- 256-bit integer operations
+- Vector shifts and rotates
+- Gather operations
+- Fused multiply-add (FMA)
+
+```assembly
+; AVX2 integer operations
+vpmulld ymm0, ymm1, ymm2    ; 32-bit multiply
+vpsllvd ymm1, ymm2, ymm3    ; Variable left shift
