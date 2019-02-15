@@ -55,3 +55,22 @@ vpsllvd ymm1, ymm2, ymm3    ; Variable left shift
 ; Check for AVX-512 support
 mov eax, 7
 xor ecx, ecx
+cpuid
+and ebx, 1<<16  ; Check AVX-512F
+jz no_avx512
+
+; AVX-512 operations
+vmovaps zmm0, [rdi]            ; Load 16 floats
+vaddps zmm1, zmm0, [rsi]       ; Add 16 floats
+vsqrtps zmm2, zmm1{k1}{z}      ; Conditional sqrt with mask k1
+vscatterdps [r8 + zmm3*4]{k2}, zmm2  ; Scatter with mask k2
+```
+
+### AVX-512 Mask Registers
+```assembly
+; Set mask register k1 where elements > 0
+vpcmpgtd k1, zmm0, [zero_vector]
+
+; Zero elements where k1 is not set
+vmovaps zmm1{k1}{z}, zmm0
+
