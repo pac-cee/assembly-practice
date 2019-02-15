@@ -74,3 +74,22 @@ vpcmpgtd k1, zmm0, [zero_vector]
 ; Zero elements where k1 is not set
 vmovaps zmm1{k1}{z}, zmm0
 
+; Merge with destination
+vaddps zmm2 {k1}, zmm0, [rsi]  ; Only update where k1 is set
+```
+
+## BMI1/BMI2 (Bit Manipulation Instructions)
+
+### BMI1 Instructions
+```assembly
+; Bit manipulation extensions
+blsi rax, rbx      ; Extract lowest set bit: rax = rbx & -rbx
+blsmsk rax, rbx    ; Mask from lowest set bit: rax = rbx ^ (rbx - 1)
+blsr rax, rbx      ; Reset lowest set bit: rax = rbx & (rbx - 1)
+
+; Population count
+popcnt rax, rbx    ; Count set bits in rbx
+```
+
+### BMI2 Instructions
+```assembly
