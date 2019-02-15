@@ -321,3 +321,10 @@ sub rax, [start_time]
 
 3. **Readability**
    - Document optimizations
+   - Keep readable versions for debugging
+
+4. **Testing**
+   - Verify optimizations don't break functionality
+   - Test with various input sizes
+
+In the next lesson, we'll explore modern x86 extensions and their applications.
