@@ -36,3 +36,22 @@ vfmadd132ps ymm0, ymm1, ymm2  ; ymm0 = ymm0 * ymm2 + ymm1
 ; AVX2 integer operations
 vpmulld ymm0, ymm1, ymm2    ; 32-bit multiply
 vpsllvd ymm1, ymm2, ymm3    ; Variable left shift
+
+; Gather operations
+; vpgatherdd ymm0, [rdi + ymm1*4], ymm2
+; ymm0[i] = [rdi + ymm1[i]*4] if ymm2[i] < 0
+```
+
+## AVX-512 (Advanced Vector Extensions 512)
+
+### Key Features
+- 512-bit vector registers (ZMM0-ZMM31)
+- 8 additional 64-bit mask registers (k0-k7)
+- New instructions for complex operations
+- Better support for 64-bit integers
+
+### AVX-512 Code Example
+```assembly
+; Check for AVX-512 support
+mov eax, 7
+xor ecx, ecx
