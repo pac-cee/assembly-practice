@@ -93,3 +93,22 @@ popcnt rax, rbx    ; Count set bits in rbx
 
 ### BMI2 Instructions
 ```assembly
+; Bit field manipulation
+pdep rax, rbx, rcx    ; Parallel bits deposit
+pext rax, rbx, rcx    ; Parallel bits extract
+
+; Advanced bit manipulation
+bzhi rax, rbx, rcx    ; Zero high bits starting at rcx
+rorx rax, rbx, 8      ; Rotate right with immediate
+```
+
+## TSX (Transactional Synchronization Extensions)
+
+### Hardware Transactional Memory
+```assembly
+; Transactional region
+xbegin .fallback
+; Transactional code
+mov rax, [shared_var1]
+add rax, [shared_var2]
+mov [shared_var1], rax
