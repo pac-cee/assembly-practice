@@ -112,3 +112,22 @@ xbegin .fallback
 mov rax, [shared_var1]
 add rax, [shared_var2]
 mov [shared_var1], rax
+xend
+jmp .done
+
+.fallback:
+; Fallback path if transaction fails
+lock xadd [shared_var1], rdx
+
+.done:
+```
+
+## MPX (Memory Protection Extensions)
+
+### Bounds Checking
+```assembly
+; Initialize bounds
+bndmk bnd0, [rdi]      ; Create bounds [rdi, rdi+rsi]
+bndstx [bounds], bnd0  ; Store bounds
+
+; Check bounds
