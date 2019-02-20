@@ -207,3 +207,22 @@ tpause ecx, eax, 0  ; ecx=0 (C0.2), eax=timeout
 ; Control-flow enforcement
 endbr64           ; Valid indirect branch target
 
+; Shadow stack operations
+saveprevssp       ; Save previous shadow stack pointer
+rstorssp          // Restore shadow stack pointer
+```
+
+## Exercises
+
+1. **SIMD Matrix Multiplication**
+   - Implement 4x4 matrix multiplication using AVX2
+   - Compare performance with scalar version
+
+2. **String Search with AVX-512**
+   - Create a fast string search using AVX-512 mask registers
+   - Handle different string lengths and alignments
+
+3. **Bit Manipulation**
+   - Implement various bit manipulation algorithms using BMI1/2
+   - Create a bitset with fast population count
+
