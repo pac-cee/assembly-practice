@@ -188,3 +188,22 @@ lea rdi, [monitor_addr]
 xor eax, eax
 xor ecx, ecx
 xor edx, edx
+umonitor rdi
+
+; Wait for write with timeout
+mov eax, 1000  ; Timeout in TSC cycles
+xor ecx, ecx
+xor edx, edx
+umwait ecx
+
+; Pause with timeout
+tpause ecx, eax, 0  ; ecx=0 (C0.2), eax=timeout
+```
+
+## CET (Control-flow Enforcement Technology)
+
+### Shadow Stack and Indirect Branch Tracking
+```assembly
+; Control-flow enforcement
+endbr64           ; Valid indirect branch target
+
