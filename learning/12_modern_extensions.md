@@ -131,3 +131,22 @@ bndmk bnd0, [rdi]      ; Create bounds [rdi, rdi+rsi]
 bndstx [bounds], bnd0  ; Store bounds
 
 ; Check bounds
+bndldx bnd1, [bounds]  ; Load bounds
+bndcl bnd1, [r8]       ; Check lower bound
+bndcu bnd1, [r8+15]    ; Check upper bound
+```
+
+## SHA Extensions
+
+### Hardware-Accelerated Hashing
+```assembly
+; SHA-1 operations
+sha1rnds4 xmm0, xmm1, 0     ; SHA1 round
+sha1nexte xmm0, xmm1        ; SHA1 message scheduling
+sha1msg1 xmm0, xmm1         ; SHA1 message scheduling
+sha1msg2 xmm0, xmm1         ; SHA1 message scheduling
+
+; SHA-256 operations
+sha256rnds2 xmm0, xmm1      ; SHA256 round
+sha256msg1 xmm0, xmm1       ; SHA256 message scheduling
+sha256msg2 xmm0, xmm1       ; SHA256 message scheduling
