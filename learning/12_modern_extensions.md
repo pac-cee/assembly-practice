@@ -226,3 +226,26 @@ rstorssp          // Restore shadow stack pointer
    - Implement various bit manipulation algorithms using BMI1/2
    - Create a bitset with fast population count
 
+4. **Cryptographic Hash**
+   - Implement SHA-256 using the SHA extensions
+   - Compare performance with software implementation
+
+## Best Practices
+
+1. **Feature Detection**
+   - Always check CPU features before using extensions
+   - Provide fallback implementations
+
+2. **Performance Considerations**
+   - Be aware of frequency scaling with wide vector units
+   - Consider memory bandwidth limitations
+
+3. **Compatibility**
+   - Document required CPU features
+   - Use runtime dispatch when possible
+
+4. **Debugging**
+   - Test with different CPU models
+   - Use performance counters to identify bottlenecks
+
+In the next lesson, we'll explore real-world projects and applications of assembly programming.
