@@ -150,3 +150,22 @@ sha1msg2 xmm0, xmm1         ; SHA1 message scheduling
 sha256rnds2 xmm0, xmm1      ; SHA256 round
 sha256msg1 xmm0, xmm1       ; SHA256 message scheduling
 sha256msg2 xmm0, xmm1       ; SHA256 message scheduling
+```
+
+## CLMUL (Carry-Less Multiplication)
+
+### Polynomial Arithmetic
+```assembly
+; Carry-less multiplication (for cryptography, CRC)
+pclmulqdq xmm0, xmm1, 0x00  ; xmm0 = xmm0 * xmm1 (low 64 bits)
+pclmulqdq xmm0, xmm1, 0x11  ; xmm0 = xmm0 * xmm1 (high 64 bits)
+```
+
+## RDRAND and RDSEED
+
+### Hardware Random Number Generation
+```assembly
+; Generate random number
+mov ecx, 100    ; Maximum retry count
+.retry:
+    rdrand eax    ; Generate random number in eax
