@@ -169,3 +169,22 @@ pclmulqdq xmm0, xmm1, 0x11  ; xmm0 = xmm0 * xmm1 (high 64 bits)
 mov ecx, 100    ; Maximum retry count
 .retry:
     rdrand eax    ; Generate random number in eax
+    jc .success   ; CF=1 if random number available
+    loop .retry
+    ; Fallback to software RNG
+.success:
+    ; eax contains random number
+
+; RDSEED (higher entropy)
+rdseed eax
+```
+
+## UMONITOR/UMWAIT/TPAUSE
+
+### Power Management and Waiting
+```assembly
+; Monitor address for write
+lea rdi, [monitor_addr]
+xor eax, eax
+xor ecx, ecx
+xor edx, edx
