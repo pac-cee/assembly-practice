@@ -36,3 +36,22 @@ mem_init:
     ; Initialize first block
     mov rax, [_heap_start]
     mov qword [rax + mem_block.next], 0
+    mov qword [rax + mem_block.size], rsi - mem_block_size
+    mov dword [rax + mem_block.magic], 0xABCD1234
+    
+    mov [free_list], rax
+    ret
+
+; Allocate memory
+malloc:
+    push rbp
+    mov rbp, rsp
+    
+    ; Implementation here
+    
+    leave
+    ret
+
+; Free memory
+free:
+    push rbp
