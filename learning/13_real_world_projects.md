@@ -17,3 +17,22 @@ struc mem_block
     .magic:     resd 1  ; Magic number for integrity checking
 endstruc
 
+section .data
+global _heap_start, _heap_end
+_heap_start: dq 0
+_heap_end:   dq 0
+free_list:   dq 0
+
+section .text
+
+global mem_init, malloc, free
+
+; Initialize memory allocator
+mem_init:
+    mov [_heap_start], rdi
+    mov [_heap_end], rdi
+    add [_heap_end], rsi
+    
+    ; Initialize first block
+    mov rax, [_heap_start]
+    mov qword [rax + mem_block.next], 0
