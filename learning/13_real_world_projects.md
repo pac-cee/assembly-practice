@@ -188,3 +188,22 @@ rgb_to_grayscale_avx2:
     ret
 
 section .rodata
+align 32
+rgb_weights:
+    db 29, 150, 77, 0, 29, 150, 77, 0  ; 0.114 * 256, 0.587 * 256, 0.299 * 256
+    times 4 dq 0
+```
+
+## 5. Network Packet Processing
+
+### Ethernet Frame Parser
+```assembly
+; bool parse_ethernet_frame(const void *packet, size_t length, eth_header_t *header)
+parse_ethernet_frame:
+    cmp rsi, 14          ; Minimum Ethernet frame size without FCS
+    jb .error
+    
+    ; Copy header
+    mov rax, [rdi]      ; Load destination MAC (6 bytes) + source MAC (2 bytes)
+    mov [rdx], rax
+    mov eax, [rdi + 8]   ; Source MAC (4 bytes) + EtherType (2 bytes)
