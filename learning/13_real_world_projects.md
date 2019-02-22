@@ -131,3 +131,22 @@ strlen_avx2:
         add rdx, 32
         jmp .loop
     
+    .found_null:
+    bsf eax, eax           ; Find first set bit
+    sub rdx, rdi           ; Calculate length
+    lea rax, [rdx + rax]   ; Add offset of null byte
+    ret
+```
+
+## 4. Image Processing
+
+### Grayscale Conversion
+```assembly
+; void rgb_to_grayscale_avx2(uint8_t *dst, const uint8_t *src, size_t width, size_t height)
+rgb_to_grayscale_avx2:
+    test rdx, rdx
+    jz .done
+    test rcx, rcx
+    jz .done
+    
+    ; Constants for RGB to grayscale conversion
