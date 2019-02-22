@@ -74,3 +74,22 @@ vec_add:
     jz .done
     
     ; Process 4 elements at a time
+    mov rax, rcx
+    and rax, ~3
+    jz .process_remaining
+    
+    .loop4:
+        vmovapd ymm0, [rsi]      ; Load a[0:3]
+        vaddpd ymm0, ymm0, [rdx]  ; Add b[0:3]
+        vmovapd [rdi], ymm0       ; Store to dst[0:3]
+        
+        add rsi, 32
+        add rdx, 32
+        add rdi, 32
+        sub rax, 4
+        jnz .loop4
+    
+    .process_remaining:
+    and rcx, 3
+    jz .done
+    
