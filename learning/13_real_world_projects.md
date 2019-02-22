@@ -150,3 +150,22 @@ rgb_to_grayscale_avx2:
     jz .done
     
     ; Constants for RGB to grayscale conversion
+    ; Y = 0.299R + 0.587G + 0.114B
+    vmovdqa ymm4, [rel rgb_weights]  ; [0.114, 0.587, 0.299, ...]
+    
+    .row_loop:
+        mov r8, rdx
+        .col_loop:
+            vmovdqu ymm0, [rsi]      ; Load 8 RGB pixels (24 bytes)
+            vmovdqu ymm1, [rsi + 32] ; Next 8 RGB pixels
+            
+            ; Process first 8 pixels
+            vpmaddubsw ymm2, ymm0, ymm4
+            vphaddw ymm2, ymm2, ymm2
+            vphaddw ymm2, ymm2, ymm2
+            vpackuswb ymm2, ymm2, ymm2
+            
+            ; Process next 8 pixels
+            vpmaddubsw ymm3, ymm1, ymm4
+            vphaddw ymm3, ymm3, ymm3
+            vphaddw ymm3, ymm3, ymm3
