@@ -55,3 +55,22 @@ malloc:
 ; Free memory
 free:
     push rbp
+    mov rbp, rsp
+    
+    ; Implementation here
+    
+    leave
+    ret
+```
+
+## 2. Math Library
+
+### Vector Math Functions
+```assembly
+; Vector addition: dst = a + b
+; void vec_add(double *dst, const double *a, const double *b, size_t n)
+vec_add:
+    test rcx, rcx
+    jz .done
+    
+    ; Process 4 elements at a time
