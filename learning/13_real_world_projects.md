@@ -169,3 +169,22 @@ rgb_to_grayscale_avx2:
             vpmaddubsw ymm3, ymm1, ymm4
             vphaddw ymm3, ymm3, ymm3
             vphaddw ymm3, ymm3, ymm3
+            vpackuswb ymm3, ymm3, ymm3
+            
+            ; Combine results
+            vpunpcklqdq ymm2, ymm2, ymm3
+            vmovdqu [rdi], xmm2
+            
+            add rsi, 48    ; 16 pixels * 3 bytes
+            add rdi, 16    ; 16 grayscale pixels
+            sub r8, 16
+            jnz .col_loop
+            
+        dec rcx
+        jnz .row_loop
+    
+    .done:
+    vzeroupper
+    ret
+
+section .rodata
