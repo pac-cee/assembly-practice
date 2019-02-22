@@ -207,3 +207,22 @@ parse_ethernet_frame:
     mov rax, [rdi]      ; Load destination MAC (6 bytes) + source MAC (2 bytes)
     mov [rdx], rax
     mov eax, [rdi + 8]   ; Source MAC (4 bytes) + EtherType (2 bytes)
+    mov [rdx + 8], eax
+    
+    ; Check for VLAN tag (802.1Q)
+    movzx eax, word [rdx + 12]
+    xchg al, ah         ; Convert to host byte order
+    cmp ax, 0x8100      ; 802.1Q VLAN tag
+    jne .done
+    
+    ; Handle VLAN tag
+    cmp rsi, 18         ; Check if packet is large enough
+    jb .error
+    
+    mov ax, [rdi + 16]  ; Get EtherType after VLAN tag
+    xchg al, ah
+    mov [rdx + 12], ax  ; Update EtherType in header
+    
+    .done:
+    mov eax, 1          ; Return true
+    ret
