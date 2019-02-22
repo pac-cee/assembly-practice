@@ -226,3 +226,22 @@ parse_ethernet_frame:
     .done:
     mov eax, 1          ; Return true
     ret
+    
+    .error:
+    xor eax, eax        ; Return false
+    ret
+```
+
+## 6. Bootloader
+
+### Simple Boot Sector
+```assembly
+bits 16
+org 0x7C00
+
+start:
+    cli
+    xor ax, ax
+    mov ds, ax
+    mov es, ax
+    mov ss, ax
