@@ -93,3 +93,22 @@ vec_add:
     and rcx, 3
     jz .done
     
+    .loop1:
+        vmovsd xmm0, [rsi]       ; Load a[i]
+        vaddsd xmm0, xmm0, [rdx]  ; Add b[i]
+        vmovsd [rdi], xmm0       ; Store to dst[i]
+        
+        add rsi, 8
+        add rdx, 8
+        add rdi, 8
+        dec rcx
+        jnz .loop1
+    
+    .done:
+    vzeroupper
+    ret
+```
+
+## 3. String Library
+
+### Optimized String Functions
