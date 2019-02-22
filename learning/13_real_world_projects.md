@@ -112,3 +112,22 @@ vec_add:
 ## 3. String Library
 
 ### Optimized String Functions
+```assembly
+; size_t strlen_avx2(const char *str)
+strlen_avx2:
+    mov rdx, rdi
+    and rdx, -32          ; Align to 32-byte boundary
+    
+    vpxor ymm0, ymm0, ymm0  ; Zero ymm0 for comparison
+    
+    .align 16
+    .loop:
+        vmovdqa ymm1, [rdx]     ; Load 32 bytes
+        vpcmpeqb ymm1, ymm1, ymm0  ; Compare with zero
+        vpmovmskb eax, ymm1        ; Get bitmask of null bytes
+        test eax, eax
+        jnz .found_null
+        
+        add rdx, 32
+        jmp .loop
+    
