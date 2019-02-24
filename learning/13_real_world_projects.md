@@ -283,3 +283,22 @@ dw 0xAA55
 ```assembly
 bits 64
 section .text
+
+global _start
+extern kmain
+
+_start:
+    ; Set up stack
+    mov rsp, stack_top
+    
+    ; Clear direction flag
+    cld
+    
+    ; Call kernel main
+    call kmain
+    
+    ; Halt if kmain returns
+    cli
+    hlt
+    jmp $
+
