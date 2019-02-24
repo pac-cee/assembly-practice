@@ -302,3 +302,22 @@ _start:
     hlt
     jmp $
 
+
+section .bss
+align 16
+stack_bottom:
+    resb 65536  ; 64KB stack
+stack_top:
+```
+
+## Project Ideas
+
+1. **Custom Data Structures**
+   - B-tree with cache-line optimization
+   - Lock-free queue/stack
+   - Memory pool allocator
+
+2. **Algorithm Implementations**
+   - Sorting algorithms (quicksort, radix sort)
+   - Compression (LZ77, Huffman)
+   - Cryptography (AES, SHA)
