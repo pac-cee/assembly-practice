@@ -245,3 +245,22 @@ start:
     mov ds, ax
     mov es, ax
     mov ss, ax
+    mov sp, 0x7C00
+    sti
+    
+    ; Set video mode
+    mov ax, 0x0003  ; 80x25 text mode
+    int 0x10
+    
+    ; Print message
+    mov si, msg_hello
+    call print_string
+    
+    ; Halt
+    cli
+    hlt
+
+print_string:
+    lodsb
+    or al, al
+    jz .done
