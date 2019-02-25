@@ -17,3 +17,22 @@ Welcome to your journey into x86-64 Assembly programming! This structured learni
 - Basic understanding of programming concepts
 - NASM (Netwide Assembler)
 - A text editor (VS Code, Sublime Text, etc.)
+- A terminal/command prompt
+
+## Setup Instructions
+
+1. **Install NASM**:
+   - Windows: Download from [nasm.us](https://www.nasm.us/)
+   - macOS: `brew install nasm`
+   - Linux: `sudo apt-get install nasm`
+
+2. **Verify Installation**:
+   ```bash
+   nasm -v
+   ```
+
+3. **Assemble and Link**:
+   ```bash
+   nasm -f win64 program.asm -o program.obj
+   gcc program.obj -o program.exe
+   ```
