@@ -359,3 +359,26 @@ stack_top:
    - Include assertions
    - Use a debugger (GDB, WinDbg)
 
+5. **Performance**
+   - Profile before optimizing
+   - Consider cache effects
+   - Use appropriate algorithms
+
+## Next Steps
+
+1. **Explore Open Source**
+   - Study Linux kernel assembly code
+   - Look at compiler output
+   - Contribute to open-source projects
+
+2. **Learn More**
+   - Study computer architecture
+   - Learn about operating systems
+   - Explore compiler design
+
+3. **Build Something**
+   - Start small and iterate
+   - Solve real problems
+   - Share your work
+
+Remember that while assembly gives you great power, it also requires great responsibility. Use it where it makes sense, and always prefer readability and maintainability over clever optimizations unless absolutely necessary.
