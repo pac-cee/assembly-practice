@@ -340,3 +340,22 @@ stack_top:
 ## Best Practices for Real Projects
 
 1. **Testing**
+   - Unit tests for all functions
+   - Fuzz testing for input validation
+   - Performance benchmarking
+
+2. **Documentation**
+   - Assembly is hard to read; document thoroughly
+   - Include examples and usage
+   - Document register usage and side effects
+
+3. **Portability**
+   - Use macros for architecture differences
+   - Provide fallback implementations
+   - Support multiple assemblers (NASM, GAS, MASM)
+
+4. **Debugging**
+   - Add debug symbols
+   - Include assertions
+   - Use a debugger (GDB, WinDbg)
+
