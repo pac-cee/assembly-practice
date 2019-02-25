@@ -36,3 +36,16 @@ Welcome to your journey into x86-64 Assembly programming! This structured learni
    nasm -f win64 program.asm -o program.obj
    gcc program.obj -o program.exe
    ```
+   (Use `-f elf64` for Linux instead of `-f win64`)
+
+## Resources
+
+- [NASM Documentation](https://www.nasm.us/xdoc/2.15.05/html/)
+- [x86-64 Assembly Guide](https://cs.lmu.edu/~ray/notes/x86assembly/)
+- [Godbolt Compiler Explorer](https://godbolt.org/) - See assembly output from C/C++ code
+
+## Practice Exercises
+
+Each lesson comes with exercises. Try to solve them without looking at the solutions first!
+
+Happy coding! 🚀
